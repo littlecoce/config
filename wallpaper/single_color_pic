@@ -1,0 +1,1 @@
+convert -size <dimension> xc:<#XXXXXX[xx]> filename.jpg
