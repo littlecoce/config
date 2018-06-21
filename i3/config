@@ -175,7 +175,7 @@ bar {
 # Appearance
 default_border pixel 0
 gaps inner 10
-gaps outer 15
+gaps outer 5
 
 # Colors:
 set $grey	#404040
@@ -191,8 +191,8 @@ set $white	#ffffff
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $grey       $darkgrey   $earth      $darkblack  $trans
-client.unfocused        $trans      $trans      $trans      $trans      $trans
-client.focused_inactive $trans      $trans      $trans      $trans      $trans
+client.unfocused        $trans      $white      $trans      $trans      $trans
+client.focused_inactive $trans      $white      $trans      $trans      $trans
 client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
