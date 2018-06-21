@@ -1,0 +1,7 @@
+[bar/top]
+:monitor = TODO
+width = 95%
+height = 35
+
+background = #000d18
+foreground = #ccffffff

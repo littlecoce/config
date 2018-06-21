@@ -172,6 +172,9 @@ bar {
 	}
 }
 
+assign [class="(?i)steam"]	$ws2
+assign [class="(?i)firefox"]	$ws1
+
 # Appearance
 default_border pixel 0
 gaps inner 10
@@ -197,6 +200,6 @@ client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
 # Change keyboard layout to de
-exec --no-startup-id "setxkbmap -layout de"
+exec --no-startup-id "setxkbmap -layout de-latin1-nodeadkeys"
 exec_always --no-startup-id compton --config /root/.config/.compton.conf
 exec_always --no-startup-id feh --bg-fill /root/.config/wallpaper/current.jpg
