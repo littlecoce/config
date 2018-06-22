@@ -162,15 +162,15 @@ mode "$mode_power" {
     bindsym Escape mode "default"
 }
 
-bar {
-        status_command i3blocks
-	i3bar_command i3bar -t
-	position top
-	strip_workspace_numbers yes
-	colors {
-		background $grey
-	}
-}
+# bar {
+#         status_command i3blocks
+# 	i3bar_command i3bar -t
+# 	position top
+# 	strip_workspace_numbers yes
+# 	colors {
+# 		background $grey
+# 	}
+# }
 
 assign [class="(?i)steam"]	$ws2
 assign [class="(?i)firefox"]	$ws1
@@ -201,5 +201,6 @@ client.background       $trans
 
 # Change keyboard layout to de
 exec --no-startup-id "setxkbmap -layout de-latin1-nodeadkeys"
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton --config /root/.config/.compton.conf
 exec_always --no-startup-id feh --bg-fill /root/.config/wallpaper/current.jpg
