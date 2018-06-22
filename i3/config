@@ -178,7 +178,7 @@ assign [class="(?i)firefox"]	$ws1
 # Appearance
 default_border pixel 0
 gaps inner 10
-gaps outer 5
+gaps outer 50
 
 # Colors:
 set $grey	#404040
