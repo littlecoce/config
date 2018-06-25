@@ -3,34 +3,32 @@ grey = #404040
 darkgrey = #000d18
 earth = #e3ceab
 white = #ffffff
+green = #82a282
+red = #dca3a3
 
 background-alt = #444
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
 background = #404040
 foreground = #ffffff
 
-
 [bar/top]
 MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
+;compositing-underline = over
 monitor-strict = false
 width = 90%
 offset-x = 5%
-offset-y = 20
+offset-y = 15
 height = 25
-;module-margin-left = 3
-;module-margin-right = 3
-module-margin = 3
-padding = 10
+line-size = 2
+module-margin-right = 1
+padding = 2
 
 background = ${colors.grey}
 foreground = ${colors.earth}
 
-font-0 = DejaVu Sans Mono:pixelsize=10;1
-font-1 = "Font Awesome 5 Brands:pixelsize=10;0
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;0"
+font-0 = DejaVu Sans Mono:pixelsize=10;2
+font-1 = "Font Awesome 5 Brands:pixelsize=10;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
 
 : Allow windows to be displayed above bar
 override-redirect = true
@@ -38,7 +36,7 @@ wm-restack = i3
 
 modules-left = i3
 modules-center = date
-modules-right = volume memory cpu eth date
+modules-right = volume memory cpu eth
 fixed-center = true
 tray-position = right
 cursor-click = pointer
@@ -46,36 +44,51 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
+format = "<label-state> <label-mode> "
+format-foreground = ${colors.grey}
+format-background = ${colors.earth}
 index-sort = true
 wrapping-scroll = false
+label-mode = %mode%
+;label-mode-padding = 3
 
 [module/cpu]
 type = internal/cpu
-
 interval = 2
-format-prefix =  
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-prefix-padding = 2
+label-padding = 2
+format-prefix = "" 
+format-prefix-background = ${colors.earth}
+format-prefix-foreground = ${colors.grey}
 label = %percentage:2%%
+label-underline = ${colors.earth}
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
-
+format-prefix-padding = 2
+label-padding = 2
+format-prefix = "" 
+format-prefix-background = ${colors.earth}
+format-prefix-foreground = ${colors.grey}
+label = %percentage_used:2%%
+label-underline = ${colors.earth}
 
 [module/eth]
 type = internal/network
-interface = enp0s3
+interface = ${file:~/.config/polybar/gw}
+;interface = enp0s3
 interval = 3.0
-format-connected-underline = #55aa55
-format-connected-prefix =  
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-padding = 2
+format-disconnected-prefix-padding = 2
+format-connected-prefix = "" 
+format-connected-prefix-background = ${colors.earth}
+format-connected-prefix-foreground = ${colors.grey}
 label-connected = %local_ip%
+label-connected-underline = ${colors.green}
+label-padding-left = 2
+label-connected-padding = 2
+label-disconnected = 2
 format-disconnected =
 
 [module/date]
@@ -85,17 +98,16 @@ date =
 ;date-alt = " %Y-%m-%d"
 time = %H:%M
 ;time-alt = %H:%M:%S
-;format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
 label = %time%
+label-padding = 2
+label-underline = ${colors.earth}
 
 [module/volume]
 type = internal/volume
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
-format-muted-prefix =  
+format-muted-prefix ="  " 
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 bar-volume-width = 10
@@ -115,29 +127,5 @@ bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
-type = custom/menu
-expand-right = true
-format-spacing = 1
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close = 
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
 [settings]
 screenchange-reload = true
-
