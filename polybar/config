@@ -127,5 +127,11 @@ bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
+[module/ff]
+type = custom/script
+label = ""
+label-foreground = ${colors.earth}
+click-left = firefox 2&>1 > /dev/null
+
 [settings]
 screenchange-reload = true

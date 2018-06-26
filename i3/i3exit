@@ -2,7 +2,8 @@
 
 lock() {
     #  killall compton
-    i3lock
+    betterlockscreen -l blur
+#     i3lock -i ~/.config/wallpaper/lock.jpg 2> /dev/null
     #  compton -b
 }
 

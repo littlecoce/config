@@ -200,8 +200,9 @@ client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
 # Change keyboard layout to de
-exec --no-startup-id "setxkbmap -layout de-latin1-nodeadkeys"
+#exec --no-startup-id "setxkbmap -layout de-latin1-nodeadkeys"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton --config /root/.config/.compton.conf
 exec_always --no-startup-id feh --bg-fill /root/.config/wallpaper/current.jpg
 exec --no-startup-id ~/.config/polybar/get_iface_gw.sh
+exec --no-startup-id betterlockscreen -u ~/.config/wallpaper/lock.jpg

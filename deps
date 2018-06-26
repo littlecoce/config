@@ -1,0 +1,9 @@
+(aur) termite
+(aur) otf-font-awesome-5-free
+(aur) polybar
+(aur) i3lock-color
+(aur) betterlockscreen
+i3(-gaps)
+compton
+feh
+zsh
