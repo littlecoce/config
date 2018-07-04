@@ -5,11 +5,24 @@ earth = #e3ceab
 white = #ffffff
 green = #82a282
 red = #dca3a3
+orange = #dbbfa2
 
 background-alt = #444
 foreground-alt = #555
 background = #404040
 foreground = #ffffff
+
+[bar/bottom]
+width = 100%
+height = 50
+bottom = true
+tray-transparent = true
+background = #00000000
+
+modules-center = battery
+: Allow windows to be displayed above bar
+override-redirect = true
+wm-restack = i3
 
 [bar/top]
 MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
@@ -34,9 +47,9 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
 override-redirect = true
 wm-restack = i3
 
-modules-left = i3
+modules-left = i3 volume 
 modules-center = date
-modules-right = volume memory cpu eth
+modules-right = battery memory cpu eth
 fixed-center = true
 tray-position = right
 cursor-click = pointer
@@ -76,8 +89,8 @@ label-underline = ${colors.earth}
 
 [module/eth]
 type = internal/network
-interface = ${file:~/.config/polybar/gw}
-;interface = enp0s3
+;interface = ${file:~/.config/polybar/gw}
+interface = enp0s25
 interval = 3.0
 format-connected-prefix-padding = 2
 format-disconnected-prefix-padding = 2
@@ -103,7 +116,7 @@ label-padding = 2
 label-underline = ${colors.earth}
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
@@ -111,13 +124,13 @@ format-muted-prefix ="  "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.orange}
+bar-volume-foreground-6 = ${colors.red}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -127,11 +140,53 @@ bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/ff]
+[module/battery]
+type = internal/battery
+
+poll-interval = 30
+full-at = 95
+battery = BAT0
+adapter = AC
+time-format = %H:%M
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full = <ramp-capacity><label-full>
+animation-charging-foreground = ${colors.darkgrey}
+animation-charging-background = ${colors.earth}
+ramp-capacity-foreground = ${colors.darkgrey}
+ramp-capacity-background = ${colors.earth}
+animation-charging-padding = 1
+ramp-capacity-padding = 2
+label-charging = %percentage:2%%
+label-discharging = %percentage:2%%
+label-full = %percentage:2%%
+label-charging-underline = ${colors.green}
+label-discharging-underline = ${colors.earth}
+label-full-underline = ${colors.green}
+label-charging-padding = 2
+label-discharging-padding = 2
+label-full-padding = 2
+
+ramp-capacity-0 = 
+ramp-capacity-0-background = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-0 = "   "
+animation-charging-1 = ">  "
+animation-charging-2 = ">> "
+animation-charging-3 = ">>>"
+animation-charging-framerate = 2000
+
+[module/script]
 type = custom/script
-label = ""
-label-foreground = ${colors.earth}
-click-left = firefox 2&>1 > /dev/null
 
 [settings]
 screenchange-reload = true
+;format-padding = 2
+;format-foreground = %{colors.earth}
+;format-background = %{colors.grey}
+;label-padding = 2
+
