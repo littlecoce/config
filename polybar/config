@@ -1,5 +1,6 @@
 [colors]
 grey = #404040
+lightgrey = #555
 darkgrey = #000d18
 earth = #e3ceab
 white = #ffffff
@@ -12,44 +13,26 @@ foreground-alt = #555
 background = #404040
 foreground = #ffffff
 
-[bar/bottom]
-width = 100%
-height = 50
-bottom = true
-tray-transparent = true
-background = #00000000
-
-modules-center = battery
-: Allow windows to be displayed above bar
-override-redirect = true
-wm-restack = i3
-
 [bar/top]
 MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
-;compositing-underline = over
-monitor-strict = false
 width = 90%
+height = 25
 offset-x = 5%
 offset-y = 15
-height = 25
 line-size = 2
-module-margin-right = 1
 padding = 2
-
 background = ${colors.grey}
 foreground = ${colors.earth}
-
-font-0 = DejaVu Sans Mono:pixelsize=10;2
-font-1 = "Font Awesome 5 Brands:pixelsize=10;2"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
-
+font-0 = DejaVu Sans Mono:pixelsize=9;2
+font-1 = "Font Awesome 5 Brands:pixelsize=9;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
 : Allow windows to be displayed above bar
 override-redirect = true
 wm-restack = i3
-
 modules-left = i3 volume 
 modules-center = date
 modules-right = battery memory cpu eth
+module-margin-right = 1
 fixed-center = true
 tray-position = right
 cursor-click = pointer
@@ -57,60 +40,56 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
+index-sort = true
+wrapping-scroll = false
 format = "<label-state> <label-mode> "
 format-foreground = ${colors.grey}
 format-background = ${colors.earth}
-index-sort = true
-wrapping-scroll = false
-label-mode = %mode%
-;label-mode-padding = 3
+label-separator = |
+label-separator-margin-left = 1
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix-padding = 2
-label-padding = 2
 format-prefix = "" 
 format-prefix-background = ${colors.earth}
 format-prefix-foreground = ${colors.grey}
+format-prefix-padding = 2
 label = %percentage:2%%
 label-underline = ${colors.earth}
+label-padding = 2
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix-padding = 2
-label-padding = 2
 format-prefix = "" 
 format-prefix-background = ${colors.earth}
 format-prefix-foreground = ${colors.grey}
+format-prefix-padding = 2
 label = %percentage_used:2%%
 label-underline = ${colors.earth}
+label-padding = 2
 
 [module/eth]
 type = internal/network
-;interface = ${file:~/.config/polybar/gw}
-interface = enp0s25
+interface = ${file:~/.config/polybar/gw}
 interval = 3.0
-format-connected-prefix-padding = 2
-format-disconnected-prefix-padding = 2
 format-connected-prefix = "" 
 format-connected-prefix-background = ${colors.earth}
 format-connected-prefix-foreground = ${colors.grey}
+format-connected-prefix-padding = 2
 label-connected = %local_ip%
 label-connected-underline = ${colors.green}
 label-padding-left = 2
 label-connected-padding = 2
 label-disconnected = 2
 format-disconnected =
+format-disconnected-prefix-padding = 2
 
 [module/date]
 type = internal/date
 interval = 1
-date =
-;date-alt = " %Y-%m-%d"
 time = %H:%M
-;time-alt = %H:%M:%S
 label = %time%
 label-padding = 2
 label-underline = ${colors.earth}
@@ -118,19 +97,17 @@ label-underline = ${colors.earth}
 [module/volume]
 type = internal/alsa
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume ="" 
 label-volume-foreground = ${root.foreground}
-format-muted-prefix ="  " 
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = muted
+format-muted-prefix =" " 
+format-muted-foreground = ${colors.lightgrey}
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.green}
 bar-volume-foreground-1 = ${colors.green}
-bar-volume-foreground-2 = ${colors.green}
-bar-volume-foreground-3 = ${colors.green}
-bar-volume-foreground-4 = ${colors.green}
-bar-volume-foreground-5 = ${colors.orange}
-bar-volume-foreground-6 = ${colors.red}
+bar-volume-foreground-2 = ${colors.orange}
+bar-volume-foreground-3 = ${colors.orange}
+bar-volume-foreground-4 = ${colors.red}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -138,11 +115,10 @@ bar-volume-fill = -
 bar-volume-fill-font = 2
 bar-volume-empty = -
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.lightgrey}
 
 [module/battery]
 type = internal/battery
-
 poll-interval = 30
 full-at = 95
 battery = BAT0
@@ -151,12 +127,6 @@ time-format = %H:%M
 format-charging = <animation-charging><label-charging>
 format-discharging = <ramp-capacity><label-discharging>
 format-full = <ramp-capacity><label-full>
-animation-charging-foreground = ${colors.darkgrey}
-animation-charging-background = ${colors.earth}
-ramp-capacity-foreground = ${colors.darkgrey}
-ramp-capacity-background = ${colors.earth}
-animation-charging-padding = 1
-ramp-capacity-padding = 2
 label-charging = %percentage:2%%
 label-discharging = %percentage:2%%
 label-full = %percentage:2%%
@@ -166,7 +136,6 @@ label-full-underline = ${colors.green}
 label-charging-padding = 2
 label-discharging-padding = 2
 label-full-padding = 2
-
 ramp-capacity-0 = 
 ramp-capacity-0-background = ${colors.red}
 ramp-capacity-1 = 
@@ -174,14 +143,17 @@ ramp-capacity-1-foreground = ${colors.red}
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+ramp-capacity-padding = 2
+ramp-capacity-foreground = ${colors.grey}
+ramp-capacity-background = ${colors.earth}
 animation-charging-0 = "   "
 animation-charging-1 = ">  "
 animation-charging-2 = ">> "
 animation-charging-3 = ">>>"
 animation-charging-framerate = 2000
-
-[module/script]
-type = custom/script
+animation-charging-padding = 1
+animation-charging-foreground = ${colors.grey}
+animation-charging-background = ${colors.earth}
 
 [settings]
 screenchange-reload = true
