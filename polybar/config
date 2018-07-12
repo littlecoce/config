@@ -31,7 +31,7 @@ override-redirect = true
 wm-restack = i3
 modules-left = i3 volume 
 modules-center = date
-modules-right = battery memory cpu eth
+modules-right = battery memory cpu gw
 module-margin-right = 1
 fixed-center = true
 tray-position = right
@@ -85,6 +85,19 @@ label-connected-padding = 2
 label-disconnected = 2
 format-disconnected =
 format-disconnected-prefix-padding = 2
+
+[module/gw]
+type = custom/script
+exec = ~/.config/polybar/get_gw_ip.sh
+interval = 1
+format-prefix = "" 
+format-prefix-background = ${colors.earth}
+format-prefix-foreground = ${colors.grey}
+format-prefix-padding = 2
+label = %output%
+label-underline = ${colors.green}
+label-padding = 2
+
 
 [module/date]
 type = internal/date
@@ -154,6 +167,8 @@ animation-charging-framerate = 2000
 animation-charging-padding = 1
 animation-charging-foreground = ${colors.grey}
 animation-charging-background = ${colors.earth}
+
+
 
 [settings]
 screenchange-reload = true
