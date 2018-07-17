@@ -146,6 +146,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym mod4+l exec --no-startup-id $HOME/.config/i3/i3exit lock
 set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
@@ -173,8 +174,8 @@ mode "$mode_power" {
 
 # Appearance
 default_border pixel 0
-gaps inner 10
-gaps outer 45
+gaps inner 5
+gaps outer 40
 
 # Colors:
 set $grey	#404040

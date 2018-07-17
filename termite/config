@@ -5,6 +5,7 @@ audible_bell = false
 #dynamic_title = true
 font = Font Awesome 5 Free Solid 9
 font = Monospace 10
+font = Fira Mono 10
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
@@ -51,7 +52,7 @@ scrollback_lines = 10000
 
 # 20% background transparency (requires a compositor)
 background = #404040
-# background = rgba(64, 64, 64, 1.0)
+# background = rgb(64, 64, 64, 1.0)
 
 # If unset, will reverse foreground and background
 highlight = #2f2f2f

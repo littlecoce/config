@@ -8,3 +8,7 @@ compton
 feh
 zsh
 ranger
+otf-fira-mono
+
+Optional:
+iwd -- Wlan
