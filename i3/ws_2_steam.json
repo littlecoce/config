@@ -37,7 +37,7 @@
        {
         "class": "^Steam$",
         "instance": "^Steam$",
-        "title": "^Friends$",
+        "title": "^Friends\\ List$",
         "transient_for": "^$"
        }
     ],

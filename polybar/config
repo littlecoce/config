@@ -109,7 +109,7 @@ label-padding = 2
 label-underline = ${colors.earth}
 
 [module/volume]
-type = internal/alsa
+type = internal/volume
 format-volume = <label-volume> <bar-volume>
 label-volume ="" 
 label-volume-foreground = ${root.foreground}

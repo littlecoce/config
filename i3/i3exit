@@ -15,16 +15,16 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        systemctl suspend
+        sudo systemctl suspend
         ;;
     hibernate)
-        systemctl hibernate
+        sudo systemctl hibernate
         ;;
     reboot)
-        systemctl reboot
+        sudo systemctl reboot
         ;;
     shutdown)
-        systemctl poweroff
+        sudo systemctl poweroff
         ;;
     *)
         echo "Usage: $0 [lock|logout|suspend|hibernate|reboot|shutdown]"

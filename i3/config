@@ -196,7 +196,7 @@ client.focused_inactive $trans      $white      $trans      $trans      $trans
 client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
-assign [class="^Steam$" title="^Steam - Self Updater$"] $ws1
+assign [class="^Steam$" title="^Steam - Self Updater$"] $ws0
 assign [class="(?i)steam"]	$ws2
 assign [class="(?i)firefox"]	$ws1
 
@@ -216,10 +216,11 @@ bindsym $mod+Shift+d exec termite -t ranger -e ranger
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id compton --config $HOME/.config/.compton.conf
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper/current.jpg
 exec --no-startup-id $HOME/.config/polybar/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/wallpaper/lock.jpg
-exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
+exec --no-startup-id $HOME/.config/i3/xautolock.sh
+exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json; workspace $ws1'
 exec --no-startup-id steam
 exec --no-startup-id firefox
+exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
