@@ -1,6 +1,6 @@
 #!/bin/sh
 
-exec xautolock -time 3 \
+exec xautolock -time 5 \
 	-locker "betterlockscreen -l blur" \
 	-detectsleep
 	-secure

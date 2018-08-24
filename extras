@@ -1,0 +1,31 @@
+# ---------- TODO ---------- 
+#
+# Add Notification-Daemon -- Dust?
+#
+#
+#
+# ---------- TRIM / DISCARD ---------- 
+#
+# To enable trim/discard on LVM on LUKS on SSD see following link
+# https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Discard.2FTRIM_support_for_solid_state_drives_.28SSD.29
+
+# /etc/default/grub: (for root partition)
+...cryptdevice=<UUID>:<Group>:allow-discards
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# /etc/lvm/lvm.conf
+issue_discards = 1
+mkinitio -p linux
+
+# As for /etc/fstab:
+# The following link suggests NOT to add discard to fstab
+# http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt/
+
+# Add regular trim job, anachron(cronie) necessary
+echo "
+#!/bin/sh
+
+/usr/bin/fstrim /
+/usr/bin/fstrim /boot
+" > /etc/cron.monthly/trimfs
+chmod +x /etc/cron.monthly/trimfs
