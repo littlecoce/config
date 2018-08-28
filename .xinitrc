@@ -1,4 +1,5 @@
 #!/bin/bash
+xset b off
 exec i3
 
 # RXVT options, see wiki.gentoo.org/wiki/Rxvt-unicode
