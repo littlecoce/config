@@ -11,9 +11,7 @@ ranger
 otf-fira-mono
 xautolock
 perl-anyevent-i3
+dmenu
 
 Optional:
 iwd -- Wlan
-
-# Add to sudoers file to allow users of group users some power commands
-%users ALL=NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot,/usr/bin/systemctl reboot,/usr/bin/systemctl suspend,/usr/bin/systemctl hibernate

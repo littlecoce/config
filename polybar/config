@@ -30,7 +30,7 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
 : Allow windows to be displayed above bar
 override-redirect = true
 wm-restack = i3
-modules-left = i3 volume 
+modules-left = i3 speaker volume 
 modules-center = date
 modules-right = battery memory cpu gw
 module-margin-right = 1
@@ -99,6 +99,16 @@ label = %output%
 label-underline = ${colors.green}
 label-padding = 2
 
+[module/speaker]
+type = custom/script
+exec = ''
+interval = 999999
+click-left = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-headphones
+click-right = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-lineout
+format = <label>
+format-foreground = ${colors.earth}
+format-background = ${colors.grey}
+label = ""
 
 [module/date]
 type = internal/date
@@ -109,7 +119,7 @@ label-padding = 2
 label-underline = ${colors.earth}
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 format-volume = <label-volume> <bar-volume>
 label-volume ="" 
 label-volume-foreground = ${root.foreground}

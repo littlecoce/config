@@ -1,8 +1,8 @@
 # ---------- TODO ---------- 
 #
 # Add Notification-Daemon -- Dust?
-#
-#
+
+
 #
 # ---------- TRIM / DISCARD ---------- 
 #
@@ -29,3 +29,14 @@ echo "
 /usr/bin/fstrim /boot
 " > /etc/cron.monthly/trimfs
 chmod +x /etc/cron.monthly/trimfs
+
+
+# ---------- Modify /etc/sudoers for power management ---------- 
+#
+# Add to sudoers file to allow users of group users some power commands
+%users ALL=NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot,/usr/bin/systemctl reboot,/usr/bin/systemctl suspend,/usr/bin/systemctl hibernate
+
+
+# ---------- Pulseaudio switch sound ---------- 
+#
+# https://wiki.archlinux.org/index.php/PulseAudio/Examples#Having_both_speakers_and_headphones_plugged_in_and_switching_in_software_on-the-fly

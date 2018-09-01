@@ -161,16 +161,14 @@ mode "$mode_power" {
     bindsym Escape mode "default"
 }
 
-# bar {
-#         status_command i3blocks
-# 	i3bar_command i3bar -t
-# 	position top
-# 	strip_workspace_numbers yes
-# 	colors {
-# 		background $grey
-# 	}
-# }
 
+############################################
+############################################
+# ------------------------------------------
+# ~~~~~~~~~~~~~~~*. Custom .*~~~~~~~~~~~~~~~ 
+# ------------------------------------------
+############################################
+############################################
 
 # Appearance
 default_border pixel 0
@@ -197,8 +195,9 @@ client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
 assign [class="^Steam$" title="^Steam - Self Updater$"] $ws10
-assign [class="(?i)steam"]	$ws2
+assign [class="(?i)steam" title="^Friends\\ List$"]	$ws2
 assign [class="(?i)firefox"]	$ws1
+assign [class="(?i)steam"]	$ws1
 assign [class="(?i)xfreerdp"]	$ws9
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -222,9 +221,8 @@ exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper/current.jpg
 exec --no-startup-id $HOME/.config/polybar/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/wallpaper/lock.jpg
 exec --no-startup-id $HOME/.config/i3/xautolock.sh
-exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
-#; workspace $ws1'
-exec --no-startup-id steam
+#exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
 # exec --no-startup-id firefox
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
+exec --no-startup-id steam
 exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
