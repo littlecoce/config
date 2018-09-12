@@ -1,6 +1,8 @@
 # ---------- TODO ---------- 
 #
 # Add Notification-Daemon -- Dust?
+# -> Add notification if battery low
+# Save alsa settings (unmute default)
 
 
 #
@@ -39,4 +41,3 @@ chmod +x /etc/cron.monthly/trimfs
 
 # ---------- Pulseaudio switch sound ---------- 
 #
-# https://wiki.archlinux.org/index.php/PulseAudio/Examples#Having_both_speakers_and_headphones_plugged_in_and_switching_in_software_on-the-fly
