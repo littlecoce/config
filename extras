@@ -2,7 +2,8 @@
 #
 # Add Notification-Daemon -- Dust?
 # -> Add notification if battery low
-# Save alsa settings (unmute default)
+# script for selecting possible profiles for audio switch
+# -> Alternative (not pa!!!)
 
 
 #
