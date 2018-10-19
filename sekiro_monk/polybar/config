@@ -1,0 +1,102 @@
+[colors]
+grey = #404040
+lightgrey = #555
+darkgrey = #000d18
+earth = #e3ceab
+white = #ffffff
+green = #82a282
+red = #cb4641
+orange = #dbbfa2
+
+neon = #db74ed
+yellow = #fcfa9f
+
+background = #00000000
+background_dark = #5a000000
+background_white = #32ffffff
+foreground = #ffffff
+
+[bar/top]
+MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
+height = 25
+line-size = 2
+padding = 2
+background = ${colors.background}
+font-0 = Fira Code:pixelsize=8;1
+font-1 = "Font Awesome 5 Brands:pixelsize=9;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
+wm-restack = i3
+modules-left = i3 volume 
+modules-center = date
+modules-right = memory cpu
+module-margin-right = 2
+fixed-center = true
+tray-position = right
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+index-sort = true
+wrapping-scroll = false
+format = "<label-state> <label-mode>  "
+format-prefix = " "
+format-background = ${colors.background_dark}
+:label-separator = " "
+:label-separator-margin-left = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label-background = ${colors.background_dark}
+label = Load %percentage:2%%
+label-padding = 2
+
+[module/memory]
+type = internal/memory
+interval = 2
+label =  Mem %percentage_used:2%%
+label-background = ${colors.background_dark}
+label-padding = 2
+
+[module/speaker]
+type = custom/script
+exec = ''
+interval = 999999
+click-left = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-headphones
+click-right = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-lineout
+format = <label>
+format-background = ${colors.background_dark}
+label = ""
+
+[module/date]
+type = internal/date
+interval = 1
+time = %H:%M:%S
+date = %d.%m.%y
+label = %time%  %date%
+label-padding = 3
+label-background = ${colors.background_dark}
+
+[module/volume]
+type = internal/alsa
+format-volume = <bar-volume>
+format-muted-background = ${colors.background_dark}
+format-volume-background = ${colors.background_dark}
+format-volume-padding = 1
+label-muted = mute
+label-muted-padding = 2
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.orange}
+bar-volume-foreground-3 = ${colors.orange}
+bar-volume-foreground-4 = ${colors.red}
+bar-volume-foreground = ${colors.dark}
+:bar-volume-gradient = false
+bar-volume-indicator = I
+bar-volume-fill = -
+bar-volume-empty = -
+
+[settings]
+screenchange-reload = true
