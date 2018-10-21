@@ -1,6 +1,6 @@
 set $mod Mod1
-# set $terminal termite
-set $terminal urxvt
+set $terminal termite
+# set $terminal urxvt
 
 # font pango:monospace 8
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -195,22 +195,36 @@ client.focused_inactive $trans      $white      $trans      $trans      $trans
 client.urgent           $red        $red        $black      $darkred    $darkred
 client.background       $trans
 
-# assign [class="(?i)firefox"]	$ws1
+assign [class="^Steam$" title="^Steam - Self Updater$"] $ws10
+assign [class="(?i)steam" title="^Friends\\ List$"]	$ws2
+assign [class="(?i)firefox"]	$ws1
+assign [class="(?i)steam"]	$ws1
 assign [class="(?i)xfreerdp"]	$ws9
 
+# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
 
-bindsym $mod+Shift+d exec $terminal -title ranger -e ranger
-bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_screenshot.png'
+bindsym $mod+Shift+d exec termite -t ranger -e ranger
+bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%s_screenshot.png'
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper/current.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.config/current.jpg
 exec --no-startup-id $HOME/.config/polybar/get_iface_gw.sh
-# exec --no-startup-id betterlockscreen -u $HOME/.config/wallpaper/lock.jpg
-# exec --no-startup-id $HOME/.config/i3/xautolock.sh
+exec --no-startup-id betterlockscreen -u $HOME/.config/lock.jpg
+exec --no-startup-id $HOME/.config/i3/xautolock.sh
+#exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
 # exec --no-startup-id firefox
-# exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id xrdb -merge $HOME/.Xresources
-exec_always --no-startup-id compton --config $HOME/.config/.compton.conf &
+exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
+exec --no-startup-id steam
+exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
