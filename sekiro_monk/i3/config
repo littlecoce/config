@@ -146,16 +146,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym mod4+l exec --no-startup-id $HOME/.config/i3/i3exit lock
+bindsym mod4+l exec --no-startup-id $HOME/.config/scripts/i3exit lock
 set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/i3/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/i3/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/i3/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/i3/i3exit shutdown
+    bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -218,11 +218,11 @@ bindsym $mod+Shift+d exec termite -t ranger -e ranger
 bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%s_screenshot.png'
 
 # Change keyboard layout to de
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/scripts/launch.sh
 exec_always --no-startup-id feh --bg-fill $HOME/.config/current.jpg
-exec --no-startup-id $HOME/.config/polybar/get_iface_gw.sh
+exec --no-startup-id $HOME/.config/scripts/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/lock.jpg
-exec --no-startup-id $HOME/.config/i3/xautolock.sh
+exec --no-startup-id $HOME/.config/scripts/xautolock.sh
 #exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
 # exec --no-startup-id firefox
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'

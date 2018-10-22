@@ -23,7 +23,6 @@ line-size = 2
 padding = 2
 background = ${colors.grey}
 foreground = ${colors.earth}
-:font-0 = DejaVu Sans Mono:pixelsize=9;2
 font-0 = Fira Mono:pixelsize=9;3
 font-1 = "Font Awesome 5 Brands:pixelsize=9;2"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
@@ -71,25 +70,9 @@ label = %percentage_used:2%%
 label-underline = ${colors.earth}
 label-padding = 2
 
-[module/eth]
-type = internal/network
-interface = ${file:~/.config/polybar/gw}
-interval = 3.0
-format-connected-prefix = "" 
-format-connected-prefix-background = ${colors.earth}
-format-connected-prefix-foreground = ${colors.grey}
-format-connected-prefix-padding = 2
-label-connected = %local_ip%
-label-connected-underline = ${colors.green}
-label-padding-left = 2
-label-connected-padding = 2
-label-disconnected = 2
-format-disconnected =
-format-disconnected-prefix-padding = 2
-
 [module/gw]
 type = custom/script
-exec = ~/.config/polybar/get_gw_ip.sh
+exec = ~/.config/scripts/get_gw_ip.sh
 interval = 1
 format-prefix = "" 
 format-prefix-background = ${colors.earth}
@@ -103,8 +86,7 @@ label-padding = 2
 type = custom/script
 exec = ''
 interval = 999999
-click-left = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-headphones
-click-right = pacmd set-sink-port alsa_output.pci-0000_00_1f.3.analog-stereo analog-output-lineout
+click-left = amixer sset Front toggle; amixer sset Headphone toggle
 format = <label>
 format-foreground = ${colors.earth}
 format-background = ${colors.grey}
@@ -117,29 +99,6 @@ time = %H:%M
 label = %time%
 label-padding = 2
 label-underline = ${colors.earth}
-
-[module/volume]
-type = internal/alsa
-format-volume = <label-volume> <bar-volume>
-label-volume ="" 
-label-volume-foreground = ${root.foreground}
-label-muted = muted
-format-muted-prefix =" " 
-format-muted-foreground = ${colors.lightgrey}
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.green}
-bar-volume-foreground-1 = ${colors.green}
-bar-volume-foreground-2 = ${colors.orange}
-bar-volume-foreground-3 = ${colors.orange}
-bar-volume-foreground-4 = ${colors.red}
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = -
-bar-volume-fill-font = 2
-bar-volume-empty = -
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.lightgrey}
 
 [module/battery]
 type = internal/battery
@@ -178,8 +137,6 @@ animation-charging-framerate = 2000
 animation-charging-padding = 1
 animation-charging-foreground = ${colors.grey}
 animation-charging-background = ${colors.earth}
-
-
 
 [settings]
 screenchange-reload = true

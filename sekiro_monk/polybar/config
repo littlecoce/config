@@ -45,6 +45,44 @@ format-background = ${colors.background_dark}
 :label-separator = " "
 :label-separator-margin-left = 1
 
+[module/battery]
+type = internal/battery
+poll-interval = 30
+full-at = 95
+battery = BAT0
+adapter = AC
+time-format = %H:%M
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full = <ramp-capacity><label-full>
+label-charging = %percentage:2%%
+label-discharging = %percentage:2%%
+label-full = %percentage:2%%
+label-charging-underline = ${colors.green}
+label-discharging-underline = ${colors.earth}
+label-full-underline = ${colors.green}
+label-charging-padding = 2
+label-discharging-padding = 2
+label-full-padding = 2
+ramp-capacity-0 = 
+ramp-capacity-0-background = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-padding = 2
+ramp-capacity-foreground = ${colors.grey}
+ramp-capacity-background = ${colors.earth}
+animation-charging-0 = "   "
+animation-charging-1 = ">  "
+animation-charging-2 = ">> "
+animation-charging-3 = ">>>"
+animation-charging-framerate = 2000
+animation-charging-padding = 1
+animation-charging-foreground = ${colors.grey}
+animation-charging-background = ${colors.earth}
+
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -57,6 +95,18 @@ type = internal/memory
 interval = 2
 label =  Mem %percentage_used:2%%
 label-background = ${colors.background_dark}
+label-padding = 2
+
+[module/gw]
+type = custom/script
+exec = ~/.config/scripts/get_gw_ip.sh
+interval = 1
+format-prefix = "" 
+format-prefix-background = ${colors.earth}
+format-prefix-foreground = ${colors.grey}
+format-prefix-padding = 2
+label = %output%
+label-underline = ${colors.green}
 label-padding = 2
 
 [module/speaker]
