@@ -223,8 +223,9 @@ exec_always --no-startup-id feh --bg-fill $HOME/.config/current.jpg
 exec --no-startup-id $HOME/.config/scripts/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/lock.jpg
 exec --no-startup-id $HOME/.config/scripts/xautolock.sh
+exec --no-startup-id dunst
 #exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
 # exec --no-startup-id firefox
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id steam
+# exec --no-startup-id steam
 exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
