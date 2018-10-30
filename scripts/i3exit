@@ -14,10 +14,10 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        xautolock -locknow && sudo systemctl suspend
+        lock && sudo systemctl suspend
         ;;
     hibernate)
-        xautolock -locknow && sudo systemctl hibernate
+        lock && sudo systemctl hibernate
         ;;
     reboot)
         sudo systemctl reboot
