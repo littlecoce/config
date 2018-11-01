@@ -41,7 +41,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsyn $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -120,6 +120,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -144,22 +145,6 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-bindsym mod4+l exec --no-startup-id $HOME/.config/scripts/i3exit lock
-set $mode_power power
-bindsym $mod+Control+l mode "$mode_power"
-mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 
 ############################################
@@ -214,6 +199,31 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
 
+# toggle mode to kill and activate programs like compton, xautolock, etc.
+set $mode_toggle toggle
+bindsym $mod+Control+t mode "$mode_toggle"
+mode "$mode_toggle" {
+	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh compton
+	bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh xautolock
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Power Menu for shutdown, restart, suspend, etc.
+bindsym mod4+l exec --no-startup-id $HOME/.config/scripts/i3exit lock
+set $mode_power power
+bindsym $mod+Control+l mode "$mode_power"
+mode "$mode_power" {
+    bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 bindsym $mod+Shift+d exec termite -t ranger -e ranger
 bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%s_screenshot.png'
 
@@ -227,5 +237,5 @@ exec --no-startup-id dunst
 #exec --no-startup-id i3-msg 'workspace $ws2; append_layout ~/.config/i3/ws_2_steam.json'
 # exec --no-startup-id firefox
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-# exec --no-startup-id steam
+exec --no-startup-id steam
 exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
