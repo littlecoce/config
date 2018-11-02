@@ -19,7 +19,7 @@ if [[ $? -eq 0 ]]; then
 	fi
 else
 	if [[ $PROG == compton ]]; then
-		compton -b --config ~/.config/.compton.conf
+		compton --config ~/.config/.compton.conf &
 	elif [[ $PROG == xautolock ]]; then 
 		~/.config/scripts/xautolock.sh &
 	fi
