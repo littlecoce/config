@@ -33,10 +33,11 @@ chmod +x /etc/cron.monthly/trimfs
 
 
 # ---------- Modify /etc/sudoers for power management ---------- 
-#
-# Add to sudoers file to allow users of group users some power commands
-%users ALL=NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot,/usr/bin/systemctl reboot,/usr/bin/systemctl suspend,/usr/bin/systemctl hibernate
-
+## Allows any user is group users to reboot or power off the system
+%users ALL=NOPASSWD: /usr/bin/systemctl poweroff
+%users ALL=NOPASSWD: /usr/bin/systemctl reboot ""
+%users ALL=NOPASSWD: /usr/bin/systemctl suspend 
+%users ALL=NOPASSWD: /usr/bin/systemctl hibernate
 
 # ---------- Pulseaudio switch sound ---------- 
 #
