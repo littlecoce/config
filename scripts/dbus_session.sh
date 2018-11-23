@@ -1,7 +1,7 @@
 #!/bin/bash
 
-addr=$(env | grep -i DBUS_SESSION_BUS_ADDRESS)
+addr=$(env -i DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS")
 
 if [ ! -z ${addr} ] ; then
-	echo "export ${addr}" > $HOME/.dbus_addr
+	echo "export ${addr}" > $HOME/.dbus/.dbus_addr
 fi

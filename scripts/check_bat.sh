@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Remember to create a cron job to execute regular
+
+# Sets dbus address variable to display dunst messages correctly 
+# when scheduled via cron. Check dbus_session.sh script!
+if [ -z $HOME/.dbus/.dbus_addr ] ; then
+	exit 1
+else 
+	. $HOME/.dbus/.dbus_addr
+fi
+
 CAP=$(</sys/class/power_supply/BAT0/capacity)
 STAT=$(</sys/class/power_supply/BAT0/status)
 
@@ -11,14 +21,6 @@ MSG="CAP is lower than 15%"
 MSG_CRIT="CAP is at 5%
 Hibernating in ${DELAY} Seconds
 Stop with killall check_bat.sh"
-
-# Sets dbus address variable to display dunst messages correctly 
-# when scheduled via cron. Check dbus_session.sh script!
-if [ -z $HOME/.dbus_addr ] ; then
-	exit 1
-else 
-	. $HOME/.dbus_addr
-fi
 
 if [ "${STAT,,}x" == "dischargingx" ] ; then
 	if [[ ${CAP} -lt 15 && ${CAP} -gt 5 ]] ; then
