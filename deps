@@ -12,6 +12,8 @@ otf-fira-mono
 xautolock
 perl-anyevent-i3
 dmenu
+dunst
 
 Optional:
 iwd -- Wlan
+python-pywal -- dynamic color-picture matcher for x
