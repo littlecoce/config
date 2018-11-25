@@ -6,7 +6,8 @@ font = Fira Mono 10
 scrollback_lines = 10000
 
 [colors]
-background = rgba(64, 64, 64, 0.8)
+# background = rgba(64, 64, 64, 0.8)
+background = rgba(0, 0, 0, 0.6)
 highlight = #2f2f2f
 color0 = #3f3f3f
 color1 = #705050
