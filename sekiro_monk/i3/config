@@ -210,11 +210,12 @@ mode "$mode_power" {
 
 bindsym $mod+Shift+d exec termite -t ranger -e ranger
 bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%S_screenshot.png'
+bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/scripts/launch.sh
-# exec_always --no-startup-id feh --bg-fill $HOME/.config/current.jpg
-exec_always --no-startup-id wal -i $HOME/.config/wallpaper/3440x1440_misty_morning.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper/3440x1440_misty_morning.jpg
+# exec_always --no-startup-id wal -i $HOME/.config/wallpaper/3440x1440_misty_morning.jpg
 exec --no-startup-id $HOME/.config/scripts/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/lock.jpg
 exec --no-startup-id $HOME/.config/scripts/xautolock.sh
