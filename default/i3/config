@@ -213,13 +213,12 @@ bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%S_screenshot.png'
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/scripts/launch.sh
-# exec_always --no-startup-id feh --bg-fill $HOME/.config/current.jpg
-exec_always --no-startup-id wal -i $HOME/.config/wallpaper/3440x1440_misty_morning.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
 exec --no-startup-id $HOME/.config/scripts/get_iface_gw.sh
-exec --no-startup-id betterlockscreen -u $HOME/.config/lock.jpg
+exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
 exec --no-startup-id $HOME/.config/scripts/xautolock.sh
 exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id steam
+# exec --no-startup-id steam
 exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf
