@@ -39,6 +39,23 @@ HOOKS=(... encrypt lvm2 resume ...)
 # Point to swap partition to resume system in /etc/default/grub
 ... resume=/dev/<volume group>/<swap>
 
+# ---------- XBOX One Controller ---------- 
+# BT Adapter v4 necessary
+# https://github.com/atar-axis/xpadneo must be installed
+# BEFORE pairing or trusting, this has to be set
+echo 1 > /sys/module/bluetooth/parameters/disable_ertm
+# or for automatic disabling create file in /etc/modprobe.d/ with content
+# "options bluetooth disable_ertm=1"
+
+# Remember to start bluetooth service
+sudo bluetoothctl
+> select <controller>
+> power on
+> scan on
+# Press pair button on controller
+> pair <MAC>
+> trust <MAC>
+> connect <MAC> 
 
 # ---------- Pulseaudio switch sound ---------- 
 #

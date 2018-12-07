@@ -210,6 +210,7 @@ mode "$mode_power" {
 
 bindsym $mod+Shift+d exec termite -t ranger -e ranger
 bindsym Print exec scrot $HOME/'%Y-%m-%d_%h_%m_%S_screenshot.png'
+bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/scripts/launch.sh
