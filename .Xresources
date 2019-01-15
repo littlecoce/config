@@ -1,0 +1,18 @@
+# ft.dpi:	96
+# ft.antialias:	true
+# ft.rgba:	rgb
+# ft.hinting:	true
+# ft.hintstyle:	hintslight
+# ft.autohint:	false
+# ft.lcdfilter:	lcddefault
+# 
+Rxvt*scrollBar:	false
+Rxvt*scrollBar_right:	false
+Rxvt*scrollbar_floating:	false
+Rxvt*scrollstyle:	rxvt
+
+URxvt*font:	xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont:	xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+# Set Cursor Theme
+Xcursor.theme: Breeze
