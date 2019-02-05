@@ -1,0 +1,64 @@
+1.1.3.1:
+
+• Gnome: volume and brightness slider fixed (gnome-shell.css)
+
+
+1.1.3:
+
+• Thunar, Nemo, Nautilus, Caja: list view improved (gtk.css)
+• Firefox add-on theme added: Bookmark search plus 2 (bookmark-search-plus-2.css, userContent.css)
+• Firefox: minor adjustments in userChrome.css (places window)
+
+
+1.1.2:
+
+• Xfce4: panel adjusted to gtk3 in Xfce 4.13 (gtk.css)
+• Xfwm4: window buttons supplemented (xfwm4)
+• Thunderbird, Lightning: Shades-of-gray icons added (userChrome.css, assets)
+• Firefox: smaller identity box for extensions in urlbar (userContent.css)
+• Firefox: menus in about:preferences fixed (userContent.css)
+• Evolution: sidebars adjusted (gtk.css)
+• gThumb: sidebar and browser background improved (gtk.css)
+• Calendar: gnome-calendar enhancements (gtk.css)
+
+
+1.1.1
+
+• Lighning 6.2: bright navigation buttons
+• Openbox: close button modified
+• Thunderbird: minimum column width defined
+• Firefox: form widgets also adapted for moz-extensions
+• Openbox: some improvements (close button, menu)
+
+
+1.1.0
+
+• New: theme for Cinnamon added
+• GTK3: minor changes
+• Metacity: updated for Cinnamon
+• Thunderbird 60: fixes and improvements
+• Lightning: theme adaptation improved
+• Firefox: fixes and further theme customizations
+
+
+1.0.4.1
+
+• Fix: gtk3-submenus are positioned closer to parent menu
+
+
+1.0.4
+
+• Thunderbird: added theme customizations for color tags in email tree view (userChrome.css)
+• Borders and separators slightly less contrast (gtk-colors.css, gnome-shell.css)
+
+
+1.0.3
+
+• Fix: window decorations of Gnome programs now correctly trigger a resize mouse pointer
+
+
+1.0.2
+
+• Borders in focused entries are highlighted more unobtrusive
+• Unused variables in gtk-colors.css removed
+• Nemo, Gedit, Pluma: sidebars treeview/places unified

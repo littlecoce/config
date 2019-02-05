@@ -2,7 +2,7 @@
 
 lock() {
     #  killall compton
-    betterlockscreen -l &
+    betterlockscreen -l blur &
     #  compton -b
 }
 

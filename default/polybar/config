@@ -17,7 +17,8 @@ background_white = #32ffffff
 foreground = #ffffff
 
 [bar/top]
-MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
+;MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
+monitor=LVDS
 height = 25
 line-size = 2
 padding = 2
