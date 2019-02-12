@@ -18,7 +18,7 @@ foreground = #ffffff
 
 [bar/top]
 ;MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
-monitor=LVDS
+monitor=${env:MONITOR:}
 height = 25
 line-size = 2
 padding = 2
@@ -38,13 +38,11 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
-index-sort = true
-wrapping-scroll = false
-format = "<label-state> <label-mode>  "
+pin-workspaces = true
+format = "<label-state><label-mode>  "
 format-prefix = " "
 format-background = ${colors.background_dark}
-:label-separator = " "
-:label-separator-margin-left = 1
+label-focused-foreground = ${colors.orange}
 
 [module/battery]
 type = internal/battery

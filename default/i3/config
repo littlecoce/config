@@ -167,8 +167,6 @@ client.background       $trans
 
 assign [class="^Steam$" title="^Steam - Self Updater$"] $ws10
 assign [class="(?i)steam" title="^Friends\\ List$"]	$ws2
-# assign [class="(?i)firefox"]	$ws1
-# assign [class="(?i)steam"]	$ws1
 assign [class="(?i)xfreerdp"]	$ws9
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -215,6 +213,7 @@ bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
 exec_always --no-startup-id $HOME/.config/scripts/launch.sh
+exec_always --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
 exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
 exec --no-startup-id $HOME/.config/scripts/get_iface_gw.sh
 exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg

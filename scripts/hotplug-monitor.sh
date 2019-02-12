@@ -5,8 +5,12 @@ VGA=$(</sys/class/drm/card0-VGA-1/status)
 
 if [ "connected" == "$DP1" ]; then
 	/usr/bin/xrandr --output DisplayPort-0 --left-of LVDS --auto
-	/usr/bin/xrandr --output VGA-0 --off
-	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "DP-1 connected"
+	if [ "connected" == "$VGA" ]; then
+		/usr/bin/xrandr --output VGA-0 --left-of DisplayPort-0 --auto
+	else
+		/usr/bin/xrandr --output VGA-0 --off
+	fi
+	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Monitor(s) connected"
 elif [ "connected" == "$VGA" ]; then
 	/usr/bin/xrandr --output VGA-0 --left-of LVDS --auto
 	/usr/bin/xrandr --output DisplayPort-0 --off
@@ -16,3 +20,4 @@ else
 	/usr/bin/xrandr --output DisplayPort-0 --off
 	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Second Monitor disconnected"
 fi
+exit
