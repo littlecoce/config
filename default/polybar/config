@@ -18,7 +18,7 @@ foreground = #ffffff
 
 [bar/top]
 ;MONITOR=$(polybar -m|tail -1|sed -e s/:.*$//g)
-monitor=${env:MONITOR:}
+;monitor=LVDS
 height = 25
 line-size = 2
 padding = 2
@@ -132,20 +132,6 @@ bar-volume-foreground = ${colors.dark}
 bar-volume-indicator = I
 bar-volume-fill = -
 bar-volume-empty = -
-
-[module/mpd]
-type = internal/mpd
-host = localhost
-port = 6600
-interval = 1
-format-online = <icon-prev><toggle><icon-next>|<icon-repeat><icon-repeatone><icon-random><label-time><label-song>
-icon-play = P
-icon-pause = H
-icon-prev = <
-icon-next = >
-icon-repeat = R
-icon-repeatone = 1
-icon-random = X
 
 [settings]
 screenchange-reload = true
