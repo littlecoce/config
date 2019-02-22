@@ -20,4 +20,5 @@ else
 	/usr/bin/xrandr --output DisplayPort-0 --off
 	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Second Monitor disconnected"
 fi
+/usr/bin/sh ~/.config/scripts/launch.sh &>2 >/dev/null
 exit

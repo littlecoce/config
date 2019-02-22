@@ -182,6 +182,7 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
+for_window [title="^mpd"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
 
 # toggle mode to kill and activate programs like compton, xautolock, etc.
@@ -190,6 +191,7 @@ bindsym $mod+Control+t mode "$mode_toggle"
 mode "$mode_toggle" {
 	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh compton
 	bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh xautolock
+	bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -210,6 +212,7 @@ mode "$mode_power" {
 }
 
 bindsym $mod+Shift+d exec termite -t ranger -e ranger
+bindsym $mod+Shift+m exec termite -t mpd -e ncmpcpp
 bindsym Print exec scrot $HOME/scrots/'%Y-%m-%d_%h_%m_%S_screenshot.png'
 bindsym $mod+p exec passmenu
 
@@ -222,5 +225,6 @@ exec --no-startup-id $HOME/.config/scripts/xautolock.sh
 exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id steam
+#exec --no-startup-id mpd
+#exec --no-startup-id steam
 exec_always --no-startup-id compton -b --config $HOME/.config/.compton.conf

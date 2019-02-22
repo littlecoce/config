@@ -27,7 +27,7 @@ font-0 = Fira Mono:pixelsize=8;1
 font-1 = "Font Awesome 5 Brands:pixelsize=9;2"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
 wm-restack = i3
-modules-left = i3 speaker volume 
+modules-left = i3 speaker volume mpd
 modules-center = date
 modules-right = battery memory cpu gw
 module-margin-right = 2
@@ -39,10 +39,14 @@ cursor-scroll = ns-resize
 [module/i3]
 type = internal/i3
 pin-workspaces = true
-format = "<label-state><label-mode>  "
-format-prefix = " "
+format = "<label-state><label-mode>"
+format-padding = 1
 format-background = ${colors.background_dark}
-label-focused-foreground = ${colors.orange}
+label-focused = " %name% "
+label-unfocused = " %name% "
+label-visible = " %name% "
+label-urgent = " %name% "
+label-focused-underline = ${colors.orange}
 
 [module/battery]
 type = internal/battery
@@ -128,6 +132,20 @@ bar-volume-foreground = ${colors.dark}
 bar-volume-indicator = I
 bar-volume-fill = -
 bar-volume-empty = -
+
+[module/mpd]
+type = internal/mpd
+host = localhost
+port = 6600
+interval = 1
+format-online = <icon-prev><toggle><icon-next>|<icon-repeat><icon-repeatone><icon-random><label-time><label-song>
+icon-play = P
+icon-pause = H
+icon-prev = <
+icon-next = >
+icon-repeat = R
+icon-repeatone = 1
+icon-random = X
 
 [settings]
 screenchange-reload = true
