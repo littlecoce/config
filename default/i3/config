@@ -184,6 +184,7 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
 for_window [title="^mpd"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
+for_window [class="popup"] floating enable
 
 # toggle mode to kill and activate programs like compton, xautolock, etc.
 set $mode_toggle toggle
@@ -207,6 +208,15 @@ mode "$mode_power" {
     bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
     bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
     bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_rdp rdp
+bindsym $mod+Control+x mode "$mode_rdp"
+mode "$mode_rdp" {
+    bindsym g mode "default", exec --no-startup-id ggfrw100
+    bindsym r mode "default", exec --no-startup-id rdp
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

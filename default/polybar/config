@@ -138,13 +138,16 @@ type = internal/mpd
 host = localhost
 port = 6600
 interval = 1
-format-online = <icon-prev><toggle><icon-next>|<icon-repeat><icon-repeatone><icon-random><label-time><label-song>
+format-online-background = ${colors.background_dark}
+format-online-padding = 2
+format-online = "[ <icon-prev> <toggle> <icon-next> ]-[ <icon-repeat> <icon-single> <icon-random> ]-[ <label-time> ]-[ <label-song> ]"
+label-time = %elapsed%/%total%
 icon-play = P
 icon-pause = H
 icon-prev = <
 icon-next = >
 icon-repeat = R
-icon-repeatone = 1
+icon-single = 1
 icon-random = X
 
 [settings]
