@@ -1,0 +1,45 @@
+#!/bin/bash
+
+REP=0
+
+while [ "$REP" -eq "0" ]; do
+	IN=$(zenity --forms --text="RDP Login" \
+		--add-entry="Server" \
+		--add-entry="Username" \
+		--add-password="Password" \
+		--separator=" " --class="popup")
+	
+	SERV=$(cut -d" " -f1 <<< $IN)
+	USER=$(cut -d" " -f2 <<< $IN)
+	PW=$(cut -d" " -f3 <<< $IN)
+	
+	xfreerdp -grab-keyboard \
+		-floatbar \
+		+clipboard \
+		/gfx -gfx-progressive -bitmap-cache -offscreen-cache -glyph-cache +fonts \
+		/drive:USB,/mnt/rdp \
+		/network:lan \
+		/cert-tofu \
+		/u:$USER \
+		/p:$PW \
+		/d:GISINGER \
+		/f \
+		/sound:sys:pulse \
+		/v:$SERV
+	RET=$?
+	case "$RET" in
+		131) ERR="Connection Failure (131)";;
+		132) ERR="Authentiaction Failure (132)";;
+		*)   ERR="An Error occured ($RET)";;
+	esac
+
+	if [ "$RET" -gt "0" ]; then
+		zenity --question --text="$ERR" \
+			--ok-label="Retry" \
+			--cancel-label="Cancel" \
+			--no-wrap
+		REP=$?
+	else
+		REP=1
+	fi
+done
