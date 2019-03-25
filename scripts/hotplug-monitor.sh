@@ -21,4 +21,6 @@ else
 	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Second Monitor disconnected"
 fi
 /usr/bin/sh ~/.config/scripts/launch.sh &>2 >/dev/null
+/usr/bin/feh --bg-fill ~/.config/default/current.jpg
+/usr/bin/betterlockscreen -u ~/.config/default/lock.jpg
 exit

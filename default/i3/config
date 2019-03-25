@@ -19,10 +19,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run -b -i
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -31,10 +31,11 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+#bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -43,7 +44,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -162,13 +163,14 @@ set $white	#ffffff
 client.focused          $grey       $darkgrey   $earth      $darkblack  $trans
 client.unfocused        $trans      $white      $trans      $trans      $trans
 client.focused_inactive $trans      $white      $trans      $trans      $trans
-client.urgent           $red        $red        $black      $darkred    $darkred
+client.urgent           $red        $red        $black      $red    	$red
 client.background       $trans
 
 assign [class="^Steam$" title="^Steam - Self Updater$"] $ws10
 # assign [class="(?i)steam" title="^Friends\\ List$"]	$ws2
 # assign [class="(?i)firefox"]	$ws1
 # assign [class="(?i)steam"]	$ws1
+assign [class="(?i)xfreerdp" title="^RDP$"]	$ws8
 assign [class="(?i)xfreerdp"]	$ws9
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -227,10 +229,10 @@ bindsym Print exec scrot $HOME/scrots/'%Y-%m-%d_%h_%m_%S_screenshot.png'
 bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
-exec_always --no-startup-id $HOME/.config/scripts/launch.sh
 exec_always --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
-exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
-exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
+#exec_always --no-startup-id $HOME/.config/scripts/launch.sh
+#exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
+#exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
 exec --no-startup-id $HOME/.config/scripts/xautolock.sh
 exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
