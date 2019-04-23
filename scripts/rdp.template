@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DOM="DOMAIN"
 REP=0
 
 while [ "$REP" -eq "0" ]; do
@@ -22,7 +23,7 @@ while [ "$REP" -eq "0" ]; do
 		/cert-tofu \
 		/u:$USER \
 		/p:$PW \
-		/d:GISINGER \
+		/d:$DOM \
 		/f \
 		/sound:sys:pulse \
 		/v:$SERV

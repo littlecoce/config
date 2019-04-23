@@ -115,10 +115,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -225,8 +225,9 @@ mode "$mode_rdp" {
 
 bindsym $mod+Shift+d exec termite -t ranger -e ranger
 bindsym $mod+Shift+m exec termite -t mpd -e ncmpcpp
-bindsym Print exec scrot $HOME/scrots/'%Y-%m-%d_%h_%m_%S_screenshot.png'
+bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png'
 bindsym --release Shift+Print exec scrot -s $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png' -e 'feh $f'
+bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png' 
 bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
