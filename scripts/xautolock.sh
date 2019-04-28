@@ -6,6 +6,3 @@ exec xautolock -time 5 \
 	-locker "~/.config/scripts/i3exit lock" \
 	-detectsleep \
 	-secure
-
-# Disable screen after a given time
-# -> Use killer feature

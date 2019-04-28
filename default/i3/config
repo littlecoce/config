@@ -185,6 +185,7 @@ for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Require
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
 for_window [title="^mpd"] floating enable
+for_window [title="^wlan"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
 for_window [class="popup"] floating enable
 
@@ -214,20 +215,30 @@ mode "$mode_power" {
     bindsym Escape mode "default"
 }
 
-set $mode_rdp rdp
-bindsym $mod+Control+x mode "$mode_rdp"
-mode "$mode_rdp" {
+set $mode_dom DOM
+bindsym $mod+Control+d mode "$mode_dom"
+mode "$mode_dom" {
     bindsym g mode "default", exec --no-startup-id ggfrw100
     bindsym r mode "default", exec --no-startup-id rdp
+    bindsym k mode "default", exec --no-startup-id /usr/local/bin/kdg
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+d exec termite -t ranger -e ranger
-bindsym $mod+Shift+m exec termite -t mpd -e ncmpcpp
-bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png'
-bindsym --release Shift+Print exec scrot -s $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png' -e 'feh $f'
-bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot.png' 
+set $mode_progs PROGS
+bindsym $mod+Control+p mode "$mode_progs"
+mode "$mode_progs" {
+    bindsym d exec  --no-startup-id termite -t ranger -e ranger; mode "default"
+    bindsym m exec  --no-startup-id termite -t mpd -e ncmpcpp; mode "default"
+    bindsym w exec  --no-startup-id termite -t wlan -e iwctl; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.png'
+bindsym --release Shift+Print exec scrot -s $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
+bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H_%M_%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
 
 # Change keyboard layout to de
