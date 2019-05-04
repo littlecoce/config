@@ -228,9 +228,11 @@ mode "$mode_dom" {
 set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
-    bindsym d exec  --no-startup-id termite -t ranger -e ranger; mode "default"
-    bindsym m exec  --no-startup-id termite -t mpd -e ncmpcpp; mode "default"
-    bindsym w exec  --no-startup-id termite -t wlan -e iwctl; mode "default"
+    bindsym d exec --no-startup-id termite -t ranger -e ranger; mode "default"
+    bindsym m exec --no-startup-id termite -t mpd -e ncmpcpp; mode "default"
+    bindsym w exec --no-startup-id termite -t wlan -e iwctl; mode "default"
+    bindsym t exec --no-startup-id teamspeak3; mode "default"
+    bindsym f exec --no-startup-id firefox; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -246,7 +248,7 @@ exec_always --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
 #exec_always --no-startup-id $HOME/.config/scripts/launch.sh
 #exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
 #exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
-exec --no-startup-id $HOME/.config/scripts/xautolock.sh
+#exec --no-startup-id $HOME/.config/scripts/xautolock.sh
 exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'

@@ -23,7 +23,7 @@ Hibernating in ${DELAY} Seconds
 Stop with killall check_bat.sh"
 
 if [ "${STAT,,}x" == "dischargingx" ] ; then
-	if [[ ${CAP} -lt 15 && ${CAP} -gt 5 ]] ; then
+	if [[ ${CAP} -lt 20 && ${CAP} -gt 5 ]] ; then
 		notify-send -u critical Battery "${MSG}"
 	elif [ ${CAP} -le 5 ] ; then
 		notify-send -u critical Battery "${MSG_CRIT}"
