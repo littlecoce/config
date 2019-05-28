@@ -10,15 +10,15 @@ if [ "connected" == "$DP1" ]; then
 	else
 		/usr/bin/xrandr --output VGA-0 --off
 	fi
-	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Monitor(s) connected"
+	/usr/bin/notify-send --urgency=low "Monitor Hotplug" "Monitor(s) connected"
 elif [ "connected" == "$VGA" ]; then
 	/usr/bin/xrandr --output VGA-0 --left-of LVDS --auto
 	/usr/bin/xrandr --output DisplayPort-0 --off
-	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "VGA-0 connected"
+	/usr/bin/notify-send --urgency=low "Monitor Hotplug" "VGA-0 connected"
 else
 	/usr/bin/xrandr --output VGA-0 --off
 	/usr/bin/xrandr --output DisplayPort-0 --off
-	/usr/bin/notify-send --urgency=normal "Monitor Hotplug" "Second Monitor disconnected"
+	/usr/bin/notify-send --urgency=low "Monitor Hotplug" "Second Monitor disconnected"
 fi
 /usr/bin/sh ~/.config/scripts/launch.sh &>2 >/dev/null
 /usr/bin/feh --bg-fill ~/.config/default/current.jpg
