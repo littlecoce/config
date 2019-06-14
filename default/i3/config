@@ -220,7 +220,7 @@ mode "$mode_power" {
 set $mode_dom DOM
 bindsym $mod+Control+d mode "$mode_dom"
 mode "$mode_dom" {
-    bindsym g mode "default", exec --no-startup-id ggfrw100
+    bindsym g mode "default", exec --no-startup-id ggfrprog
     bindsym r mode "default", exec --no-startup-id rdp
     bindsym k mode "default", exec --no-startup-id /usr/local/bin/kdg
     bindsym Return mode "default"

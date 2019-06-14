@@ -1,3 +1,5 @@
-# copy auologin@.service to /etc/systemd/system/. for conventience
+# copy auologin@.service to /etc/systemd/system/. for convenience
 # symlink to autologin as user "nonce", change in file mentioned above
 ln -sf /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/autologin@tty1.service
+# or
+systemctl enable autologin@tty1.service
