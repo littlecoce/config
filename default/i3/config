@@ -231,8 +231,8 @@ set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
     bindsym d mode "default", exec --no-startup-id termite -t ranger -e ranger
-    bindsym m mode "default", exec --no-startup-id termite -t mpd -e ncmpcpp
-    bindsym n mode "default", exec --no-startup-id $HOME/.config/scripts/launch_neomutt.sh
+    bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
+    bindsym n mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh neomutt
     bindsym w mode "default", exec --no-startup-id termite -t wlan -e iwctl
     bindsym t mode "default", exec --no-startup-id teamspeak3
     bindsym f mode "default", exec --no-startup-id firefox
