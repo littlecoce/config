@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 lock() {
-    #  killall compton
     betterlockscreen -l blur &
-    #  compton -b
 }
 
 case "$1" in
@@ -29,5 +27,9 @@ case "$1" in
         echo "Usage: $0 [lock|logout|suspend|hibernate|reboot|shutdown]"
         exit 2
 esac
+
+if [ -d $HOME/.yubico ]; then
+	ykpamcfg -2
+fi
 
 exit 0

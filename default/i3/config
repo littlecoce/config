@@ -185,6 +185,7 @@ for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Require
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^ranger"] floating enable
 for_window [title="^mpd"] floating enable
+for_window [title="^vimpc"] floating enable
 for_window [title="^wlan"] floating enable
 for_window [class="^xfreerdp"] fullscreen enable
 for_window [class="popup"] floating enable
