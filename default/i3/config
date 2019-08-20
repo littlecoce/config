@@ -257,5 +257,5 @@ exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
 exec --no-startup-id mpd
-#exec --no-startup-id steam
+exec --no-startup-id steam
 exec --no-startup-id compton -b --config $HOME/.config/.compton.conf
