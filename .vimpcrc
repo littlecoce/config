@@ -1,0 +1,22 @@
+" Set default and open tabs
+set window directory
+set windows directory,playlist,browse,library
+
+set noalbumartist
+set noautolyrics
+set autoscroll
+set browsenumbers
+set ignorecase
+set incsearch
+set singlequit
+set smartcase
+set songnumbers
+set sortignorecase
+set sortignorethe
+
+highlight status bold_black bold_yellow
+highlight tab bold_black yellow
+highlight song default yellow 
+highlight full default bold_black 
+highlight partial default blue 
+highlight current default white 
