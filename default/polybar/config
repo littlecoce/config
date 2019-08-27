@@ -24,8 +24,9 @@ line-size = 2
 padding = 2
 background = ${colors.background}
 font-0 = Fira Mono:pixelsize=8;1
-font-1 = "Font Awesome 5 Brands:pixelsize=9;2"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
+font-1 = "Source Han Sans JP normal:size=9;1"
+font-2 = "Font Awesome 5 Brands:pixelsize=9;2"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
@@ -140,15 +141,16 @@ port = 6600
 interval = 1
 format-online-background = ${colors.background_dark}
 format-online-padding = 2
-format-online = "[ <icon-prev> <toggle> <icon-next> ]-[ <icon-repeat> <icon-single> <icon-random> ]-[ <label-time> ]-[ <label-song> ]"
+format-online = "<icon-prev> <toggle> <icon-next>   <icon-repeat> <icon-single> <icon-random>  { <label-time> }-{ <label-song> }"
+;format-online = "[ <icon-prev> <toggle> <icon-next> ]-[ <icon-repeat> <icon-single> <icon-random> ]-[ <label-time> ]-[ <label-song> ]"
 label-time = %elapsed%/%total%
-icon-play = P
-icon-pause = H
-icon-prev = <
-icon-next = >
-icon-repeat = R
-icon-single = 1
-icon-random = X
+icon-play =  
+icon-pause = 
+icon-prev = 
+icon-next = 
+icon-repeat = 
+icon-single = 
+icon-random = 
 
 [settings]
 screenchange-reload = true
