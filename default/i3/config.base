@@ -246,16 +246,3 @@ bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.pn
 bindsym --release Shift+Print exec scrot -s $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
 bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
-
-# Change keyboard layout to de
-exec_always --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
-#exec_always --no-startup-id $HOME/.config/scripts/launch.sh
-#exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
-#exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
-#exec --no-startup-id $HOME/.config/scripts/xautolock.sh
-exec --no-startup-id dunst
-exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
-exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id mpd
-exec --no-startup-id steam
-exec --no-startup-id compton -b --config $HOME/.config/.compton.conf
