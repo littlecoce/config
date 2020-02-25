@@ -141,11 +141,12 @@ mode "resize" {
 ############################################
 
 # Appearance
-# new_window 1pixel
 new_float none
-default_border pixel 0
-gaps inner 10
+default_border pixel 1
+gaps inner 0
 gaps outer 0
+
+workspace $ws1 output primary
 
 # Colors:
 set $grey	#404040
@@ -160,7 +161,7 @@ set $darkblack	#282828
 set $white	#ffffff
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $grey       $darkgrey   $earth      $darkblack  $trans
+client.focused          $trans      $darkgrey   $earth      $green  	$green
 client.unfocused        $trans      $white      $trans      $trans      $trans
 client.focused_inactive $trans      $white      $trans      $trans      $trans
 client.urgent           $red        $red        $black      $red    	$red
@@ -174,27 +175,27 @@ assign [class="(?i)xfreerdp" title="^RDP$"]	$ws8
 assign [class="(?i)xfreerdp"]	$ws9
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
-for_window [class="^Steam$" title="Steam - News"] floating enable
-for_window [class="^Steam$" title=".* - Chat"] floating enable
-for_window [class="^Steam$" title="^Settings$"] floating enable
-for_window [class="^Steam$" title=".* - event started"] floating enable
-for_window [class="^Steam$" title=".* CD key"] floating enable
-for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-for_window [title="^Steam Keyboard$"] floating enable
-for_window [title="^ranger"] floating enable
-for_window [title="^mpd"] floating enable
-for_window [title="^vimpc"] floating enable
-for_window [title="^wlan"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable, border none
+for_window [class="^Steam$" title=".* - Chat"] floating enable, border none
+for_window [class="^Steam$" title="^Settings$"] floating enable, border none
+for_window [class="^Steam$" title=".* - event started"] floating enable, border none
+for_window [class="^Steam$" title=".* CD key"] floating enable, border none
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable, border none
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable, border none
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable, border none
+for_window [title="^Steam Keyboard$"] floating enable, border none
+for_window [title="^ranger"] floating enable, border none
+for_window [title="^mpd"] floating enable, border none
+for_window [title="^vimpc"] floating enable, border none
+for_window [title="^wlan"] floating enable, border none
 for_window [class="^xfreerdp"] fullscreen enable
-for_window [class="popup"] floating enable
+for_window [class="popup"] floating enable, border none
 
-# toggle mode to kill and activate programs like compton, xautolock, etc.
+# toggle mode to kill and activate programs like picom, xautolock, etc.
 set $mode_toggle toggle
 bindsym $mod+Control+t mode "$mode_toggle"
 mode "$mode_toggle" {
-	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh compton
+	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh picom
 	bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh xautolock
 	bindsym b mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh bluetooth
 	bindsym t mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_touchpad.sh
@@ -243,6 +244,12 @@ mode "$mode_progs" {
 }
 
 bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.png'
-bindsym --release Shift+Print exec scrot -s $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
+bindsym --release Shift+Print exec scrot -fs $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
 bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
+
+# Move whole workspace to other output
+bindsym $mod+Shift+Control+h move workspace to output left
+bindsym $mod+Shift+Control+Left move workspace to output left
+bindsym $mod+Shift+Control+l move workspace to output right
+bindsym $mod+Shift+Control+Right move workspace to output right

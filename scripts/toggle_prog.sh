@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $1 == compton ]]; then
-	PROG=compton
+if [[ $1 == picom ]]; then
+	PROG=picom
 elif [[ $1 == xautolock ]]; then
 	PROG=xautolock
 elif [[ $1 == bluetooth ]]; then
@@ -11,18 +11,18 @@ else
 	exit 1;
 fi
 
-pidof $PROG 2>&1 > /dev/null
+PID=$(pidof $PROG)
 
 if [[ $? -eq 0 ]]; then
-	killall $PROG
+	kill $PID
 	if [[ $? -eq 0 ]]; then
 		notify-send -u low $PROG "Deactivated"
 	else
 		notify-send $PROG "A problem occured (deacvtivate)"
 	fi
 else
-	if [[ $PROG == compton ]]; then
-		compton --config ~/.config/.compton.conf &
+	if [[ $PROG == picom ]]; then
+		picom -b --config ~/.config/.picom.conf &
 	elif [[ $PROG == xautolock ]]; then 
 		~/.config/scripts/xautolock.sh &
 	fi
@@ -32,3 +32,4 @@ else
 		notify-send $PROG "A problem occured (activate)"
 	fi
 fi
+exit 0

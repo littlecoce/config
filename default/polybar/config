@@ -30,7 +30,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
-modules-right = battery memory cpu gw
+modules-right = newmail battery memory cpu gw
 module-margin-right = 2
 fixed-center = true
 tray-position = right
@@ -151,6 +151,15 @@ icon-next = 
 icon-repeat = 
 icon-single = 
 icon-random = 
+
+[module/newmail]
+type = custom/script
+exec = ~/.mail/get_num_new_mail.sh
+exec-if = [ -d ~/mail/ ]
+interval = 60
+label = %output%
+label-background = ${colors.background_dark}
+label-padding = 2
 
 [settings]
 screenchange-reload = true

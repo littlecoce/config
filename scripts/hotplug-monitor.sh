@@ -20,7 +20,7 @@
 # 	/usr/bin/xrandr --output DisplayPort-0 --off
 # 	/usr/bin/notify-send --urgency=low "Monitor Hotplug" "Second Monitor disconnected"
 # fi
-xrandr --output VGA-0 --right-of DVI-D-0 --auto
+xrandr --output HDMI-0 --left-of VGA-0 --auto --primary
 /usr/bin/sh ~/.config/scripts/launch.sh 1>&2 >/dev/null
 /usr/bin/feh --bg-fill ~/.config/default/current.jpg
 /usr/bin/betterlockscreen -u ~/.config/default/lock.jpg
