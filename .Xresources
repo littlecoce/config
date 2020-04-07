@@ -6,39 +6,40 @@
 ! ft.autohint:	false
 ! ft.lcdfilter:	lcddefault
 
-! black dark/light
-Xterm*color0:                # 000000
-Xterm*color8:                # 404040
+# GRUVBOX8
+# dark0 + gray
+*color0:	#282828
+*color8:	#928374
 
-! red dark/light
-Xterm*color1:                # cc9393
-Xterm*color9:                # dfbe95
+# neutral_red + bright_red
+*color1:	#cc241d
+*color9:	#fb4934
 
-! green dark/light
-Xterm*color2:                # 7f9f7f
-Xterm*color10:               # acc1ac
+# neutral_green + bright_green
+*color2:	#98971a
+*color10:	#b8bb26
 
-! yellow dark/light
-Xterm*color3:                # f0efd0
-Xterm*color11:               # efefaf
+# neutral_yellow + bright_yellow
+*color3:	#d79921
+*color11:	#fabd2f
 
-! blue dark/light
-Xterm*color4:                # 3f3f6a
-! change?
-Xterm*color12:               # 5f87ff
+# neutral_blue + bright_blue
+*color4:	#458588
+*color12:	#83a598
 
-! magenta dark/light
-Xterm*color5:                # d700d7
-Xterm*color13:               # d75fd7
+# neutral_purple + bright_purple
+*color5:	#b16286
+*color13:	#d3869b
 
-! cyan dark/light
-Xterm*color6:                # 8acccf
-Xterm*color14:               # 53dccd
+# neutral_aqua + faded_aqua
+*color6:	#689d6a
+*color14:	#8ec07c
 
-! white dark/light
-Xterm*color7:                # c0c0c0
-Xterm*color15:               # ffffff
+# light4 + light1
+*color7:	#a89984
+*color15:	#ebdbb2
 
+neomutt*color7: #ffffff
 
 Rxvt*scrollBar:	false
 Rxvt*scrollBar_right:	false

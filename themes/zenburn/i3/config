@@ -149,30 +149,23 @@ gaps outer 0
 workspace $ws1 output primary
 
 # Colors:
-set_from_resource 	$black       	color0  #000000
-set_from_resource 	$grey   	color8  #000000
-set_from_resource 	$darkred     	color1  #000000
-set_from_resource 	$red         	color9  #000000
-set_from_resource 	$darkgreen   	color2  #000000
-set_from_resource 	$green       	color10 #000000
-set_from_resource 	$darkyellow  	color3  #000000
-set_from_resource 	$yellow      	color11 #000000
-set_from_resource 	$darkblue    	color4  #000000
-set_from_resource 	$blue        	color12 #000000
-set_from_resource 	$darkmagenta 	color5  #000000
-set_from_resource 	$magenta     	color13 #000000
-set_from_resource 	$darkcyan    	color6  #000000
-set_from_resource 	$cyan        	color14 #000000
-set_from_resource 	$darkwhite   	color7  #000000
-set_from_resource 	$white       	color15 #000000
-set 			$trans			#00000000
+set $grey	#404040
+set $darkgrey	#000d18
+set $green	#82a282
+set $orange	#ffcfaf
+set $earth	#e3ceab
+set $red	#dca3a3
+set $trans	#00000000
+set $black	#1d2021
+set $darkblack	#282828
+set $white	#ffffff
 
-#                       BORDER		BACKGROUND	TEXT		INDICATOR	CHILD_BORDER
-client.focused          $grey		$grey	  	$yellow  	$yellow  	$yellow
-client.unfocused        $grey   	$grey      	$grey   	$grey   	$grey
-client.focused_inactive $grey   	$grey      	$grey   	$grey   	$grey
-client.urgent           $red		$red       	$black  	$red    	$red
-client.background       $grey
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $trans      $darkgrey   $earth      $green  	$green
+client.unfocused        $trans      $white      $trans      $trans      $trans
+client.focused_inactive $trans      $white      $trans      $trans      $trans
+client.urgent           $red        $red        $black      $red    	$red
+client.background       $trans
 
 assign [class="^Steam$" title="^Steam - Self Updater$"] $ws10
 # assign [class="(?i)steam" title="^Friends\\ List$"]	$ws2
@@ -260,3 +253,23 @@ bindsym $mod+Shift+Control+h move workspace to output left
 bindsym $mod+Shift+Control+Left move workspace to output left
 bindsym $mod+Shift+Control+l move workspace to output right
 bindsym $mod+Shift+Control+Right move workspace to output right
+## Multimonitor Setup
+exec_always --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
+
+## Statusbar
+# exec_always --no-startup-id $HOME/.config/scripts/launch.sh
+
+## Misc
+# exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
+# exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
+# exec --no-startup-id $HOME/.config/scripts/xautolock.sh
+exec --no-startup-id dunst
+exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
+exec --no-startup-id picom -b --config $HOME/.config/.picom.conf
+
+## Programms
+exec --no-startup-id i3-msg 'workspace $ws1; exec firefox &'
+exec --no-startup-id i3-msg 'workspace $ws2; exec $HOME/.config/scripts/launch_blankless.sh neomutt &'
+exec --no-startup-id mpd
+# exec --no-startup-id steam
+# exec --no-startup-id $HOME/.config/scripts/sync_mail.sh

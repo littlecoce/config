@@ -1,0 +1,52 @@
+! ft.dpi:	96
+! ft.antialias:	true
+! ft.rgba:	rgb
+! ft.hinting:	true
+! ft.hintstyle:	hintslight
+! ft.autohint:	false
+! ft.lcdfilter:	lcddefault
+
+! black dark/light
+Xterm*color0:                # 000000
+Xterm*color8:                # 404040
+
+! red dark/light
+Xterm*color1:                # cc9393
+Xterm*color9:                # dfbe95
+
+! green dark/light
+Xterm*color2:                # 7f9f7f
+Xterm*color10:               # acc1ac
+
+! yellow dark/light
+Xterm*color3:                # f0efd0
+Xterm*color11:               # efefaf
+
+! blue dark/light
+Xterm*color4:                # 3f3f6a
+! change?
+Xterm*color12:               # 5f87ff
+
+! magenta dark/light
+Xterm*color5:                # d700d7
+Xterm*color13:               # d75fd7
+
+! cyan dark/light
+Xterm*color6:                # 8acccf
+Xterm*color14:               # 53dccd
+
+! white dark/light
+Xterm*color7:                # c0c0c0
+Xterm*color15:               # ffffff
+
+
+Rxvt*scrollBar:	false
+Rxvt*scrollBar_right:	false
+Rxvt*scrollbar_floating:	false
+Rxvt*scrollstyle:	rxvt
+
+URxvt*font:	xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont:	xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+! Set Cursor Theme
+Xcursor.theme: Breeze
