@@ -1,3 +1,6 @@
+[monitor]
+monitor=${env:MONITOR:}
+
 [colors]
 # GRUVBOX8
 # ==========================================
@@ -55,7 +58,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
-modules-right = newmail battery memory cpu gw
+modules-right = newmail battery memory cpu gw ping
 module-margin-right = 2
 fixed-center = true
 tray-position = right
@@ -114,6 +117,14 @@ type = custom/script
 exec = ~/.config/scripts/get_gw_ip.sh
 interval = 1
 label = GW %output%
+label-underline = ${colors.underline}
+label-padding = 2
+
+[module/ping]
+type = custom/script
+inherit = bar/top
+exec = ping -c 1 1.1.1.1 | tail -1 | cut -d' ' -f 4 | cut -d/ -f 1
+label = %output%ms
 label-underline = ${colors.underline}
 label-padding = 2
 

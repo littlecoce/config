@@ -39,8 +39,6 @@
 *color7:	#a89984
 *color15:	#ebdbb2
 
-neomutt*color7: #ffffff
-
 Rxvt*scrollBar:	false
 Rxvt*scrollBar_right:	false
 Rxvt*scrollbar_floating:	false
