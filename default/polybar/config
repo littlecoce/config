@@ -58,7 +58,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
-modules-right = newmail battery memory cpu gw ping
+modules-right = newmail battery memory cpu gw
 module-margin-right = 2
 fixed-center = true
 tray-position = right
