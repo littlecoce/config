@@ -221,7 +221,7 @@ mode "$mode_power" {
     bindsym s mode "default", exec --no-startup-id sudo systemctl suspend
     bindsym h mode "default", exec --no-startup-id sudo systemctl hibernate
     bindsym r mode "default", exec --no-startup-id sudo systemctl reboot
-    bindsym p mode "default", exec --no-startup-id sudo systemctl shutdown
+    bindsym p mode "default", exec --no-startup-id sudo systemctl poweroff
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
