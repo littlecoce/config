@@ -195,6 +195,9 @@ for_window [class="^Steam$" title=".* CD key"] floating enable, border none
 for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable, border none
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable, border none
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable, border none
+
+# More window settings
+for_window [class="^firefox$" title="^Picture\\-in\\-Picture$"] sticky enable
 for_window [title="^Steam Keyboard$"] floating enable, border none
 for_window [title="^ranger"] floating enable, border none
 for_window [title="^mpd"] floating enable, border none
@@ -207,11 +210,12 @@ for_window [class="popup"] floating enable, border none
 set $mode_toggle toggle
 bindsym $mod+Control+t mode "$mode_toggle"
 mode "$mode_toggle" {
+	bindsym b mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh bluetooth
 	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh picom
 	bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh xautolock
-	bindsym b mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh bluetooth
-	bindsym t mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_touchpad.sh
 	bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
+	bindsym t mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_touchpad.sh
+	bindsym s mode "default", sticky toggle
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
