@@ -143,8 +143,13 @@ mode "resize" {
 # Appearance
 new_float none
 default_border pixel 1
+<<<<<<< HEAD
 gaps inner 20
 gaps outer 10
+=======
+# gaps inner 0
+# gaps outer 0
+>>>>>>> 8aa333ca16d7d0646ac723cf7c6befdfb43eda4c
 
 workspace $ws1 output primary
 
@@ -217,11 +222,11 @@ set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
     bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
+    bindsym e mode "default", exec --no-startup-id i3-msg exit
+    bindsym s mode "default", exec --no-startup-id sudo systemctl suspend
+    bindsym h mode "default", exec --no-startup-id sudo systemctl hibernate
+    bindsym r mode "default", exec --no-startup-id sudo systemctl reboot
+    bindsym p mode "default", exec --no-startup-id sudo systemctl poweroff
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
