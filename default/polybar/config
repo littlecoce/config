@@ -4,7 +4,8 @@ monitor=${env:MONITOR:}
 [colors]
 # GRUVBOX8
 # ==========================================
-background = #282828
+# background = #28282800
+background = #00000000
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 underline = #928374
@@ -58,7 +59,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
-modules-right = newmail battery memory cpu gw ping
+modules-right = newmail battery memory cpu gw
 module-margin-right = 2
 fixed-center = true
 tray-position = right
@@ -148,6 +149,7 @@ date = %d.%m.%y
 label = %time%  %date%
 label-padding = 3
 label-underline = ${colors.underline}
+label-foreground = ${colors.color15}
 
 [module/volume]
 type = internal/pulseaudio

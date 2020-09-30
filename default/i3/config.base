@@ -16,7 +16,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '#282828' -nf '#a89984' -sb '#d79921' -b
+bindsym $mod+d exec dmenu_run -nb '#282828' -nf '#a89984' -sb '#d79921' -b -i
 
 # change focus
 bindsym $mod+h focus left
@@ -143,8 +143,8 @@ mode "resize" {
 # Appearance
 new_float none
 default_border pixel 1
-gaps inner 0
-gaps outer 0
+gaps inner 20
+gaps outer 10
 
 workspace $ws1 output primary
 
@@ -246,6 +246,21 @@ mode "$mode_progs" {
     bindsym t mode "default", exec --no-startup-id teamspeak3
     bindsym f mode "default", exec --no-startup-id firefox
 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_kill KILL
+bindsym $mod+Control+k mode "$mode_kill"
+mode "$mode_kill" {
+    bindsym b mode "default", exec --no-startup-id pkill -fi -9 bc2
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_music MUSIC
+bindsym $mod+Control+m mode "$mode_music"
+mode "$mode_music" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
