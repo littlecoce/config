@@ -143,13 +143,8 @@ mode "resize" {
 # Appearance
 new_float none
 default_border pixel 1
-<<<<<<< HEAD
 gaps inner 20
 gaps outer 10
-=======
-# gaps inner 0
-# gaps outer 0
->>>>>>> 8aa333ca16d7d0646ac723cf7c6befdfb43eda4c
 
 workspace $ws1 output primary
 
