@@ -51,7 +51,10 @@ window:
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
+<<<<<<< HEAD
   #dynamic_padding: false
+=======
+>>>>>>> dfd5571e8bb1aba0bf59fb1b1c4b581fa4a51638
 
   # Window decorations
   #
@@ -151,7 +154,11 @@ font:
     #style: Bold Italic
 
   # Point size
+<<<<<<< HEAD
   #size: 10.0
+=======
+  #size: 11.0
+>>>>>>> dfd5571e8bb1aba0bf59fb1b1c4b581fa4a51638
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -180,8 +187,13 @@ font:
 colors:
   # Default colors
   #primary:
+<<<<<<< HEAD
   #  background: '#1d1f21'
   #  foreground: '#c5c8c6'
+=======
+  #  background: '#282828
+  #  foreground: '#ebdbb2'
+>>>>>>> dfd5571e8bb1aba0bf59fb1b1c4b581fa4a51638
 
     # Bright and dim foreground colors
     #
@@ -340,7 +352,11 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
+<<<<<<< HEAD
 background_opacity: 0.3
+=======
+#background_opacity: 1.0
+>>>>>>> dfd5571e8bb1aba0bf59fb1b1c4b581fa4a51638
 
 #selection:
   # This string contains all characters that are used as separators for
@@ -440,9 +456,15 @@ background_opacity: 0.3
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
+<<<<<<< HEAD
     #launcher:
     #  program: xdg-open
     #  args: []
+=======
+    launcher:
+      program: firefox
+      args: []
+>>>>>>> dfd5571e8bb1aba0bf59fb1b1c4b581fa4a51638
 
     # URL modifiers
     #

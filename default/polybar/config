@@ -59,7 +59,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
-modules-right = newmail battery memory cpu gw
+modules-right = newmail battery updates memory cpu gw
 module-margin-right = 2
 fixed-center = true
 tray-position = right
@@ -105,6 +105,13 @@ interval = 2
 label-underline = ${colors.underline}
 label = Load %percentage:2%%
 label-padding = 2
+
+[module/updates]
+type = custom/script
+exec = ~/.config/scripts/polybar-pacman-aur.sh
+label-underline = ${colors.underline}
+label-padding = 2
+interval = 600
 
 [module/memory]
 type = internal/memory
@@ -168,7 +175,7 @@ bar-volume-foreground-2 = ${colors.color3}
 bar-volume-foreground-3 = ${colors.color3}
 bar-volume-foreground-4 = ${colors.color1}
 bar-volume-foreground = ${colors.dark}
-:bar-volume-gradient = false
+;bar-volume-gradient = false
 bar-volume-indicator = I
 bar-volume-fill = -
 bar-volume-empty = -

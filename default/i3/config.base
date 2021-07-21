@@ -1,5 +1,5 @@
 set $mod Mod1
-set $terminal termite
+set $terminal alacritty
 # set $terminal urxvt
 
 font pango:DejaVu Sans Mono 14
@@ -243,10 +243,10 @@ mode "$mode_dom" {
 set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
-    bindsym d mode "default", exec --no-startup-id termite -t ranger -e ranger
+    bindsym d mode "default", exec --no-startup-id $terminal --title ranger -e ranger
     bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
     bindsym n mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh neomutt
-    bindsym w mode "default", exec --no-startup-id termite -t wlan -e iwctl
+    bindsym w mode "default", exec --no-startup-id $terminal --title wlan --command iwctl
     bindsym t mode "default", exec --no-startup-id teamspeak3
     bindsym f mode "default", exec --no-startup-id firefox
 
@@ -265,6 +265,8 @@ mode "$mode_kill" {
 set $mode_music MUSIC
 bindsym $mod+Control+m mode "$mode_music"
 mode "$mode_music" {
+    bindsym j exec --no-startup-id amixer sset Master 5%-
+    bindsym k exec --no-startup-id amixer sset Master 5%+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
