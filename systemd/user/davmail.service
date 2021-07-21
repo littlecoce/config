@@ -1,0 +1,12 @@
+[Unit]
+Description=Davmail Exchange Gateway
+Requires=mail.target
+After=mail.target
+
+[Service]
+ExecStart=/usr/bin/davmail %h/.mail/.davmail.properties
+Restart=on-failure
+PrivateTmp=yes
+
+[Install]
+WantedBy=mail.target

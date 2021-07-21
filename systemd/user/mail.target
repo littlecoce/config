@@ -1,0 +1,8 @@
+[Unit]
+Description=Mail target to manage dependent mail units
+Requires=multi-user.target network.target
+After=multi-user.target network.target
+AllowIsolate=no
+
+[Install]
+WantedBy=default.target

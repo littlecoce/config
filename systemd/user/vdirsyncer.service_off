@@ -1,0 +1,12 @@
+[Unit]
+Description=vdirsyncer calendar and contact sync
+After=davmail.service
+Requires=davmail.service
+
+[Service]
+ExecStart=/usr/bin/vdirsyncer
+Restart=on-failure
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

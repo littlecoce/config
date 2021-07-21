@@ -1,0 +1,8 @@
+[Unit]
+Description=Dunst User Service
+
+[Service]
+ExecStart=/usr/bin/dunst
+
+[Install]
+WantedBy=multi-user.target

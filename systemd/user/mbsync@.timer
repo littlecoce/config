@@ -1,0 +1,13 @@
+[Unit]
+Description=Timer for mbsync
+ConditionPathExists=%h/.mbsyncrc
+Requires=mail.target davmail.service
+After=mail.target davmail.service
+
+[Timer]
+Unit=mbsync@%i.service
+OnBootSec=1m
+OnUnitInactiveSec=5m
+
+[Install]
+WantedBy=mail.target
