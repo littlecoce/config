@@ -8,7 +8,8 @@ browser=firefox
 
 [colors]
 # GRUVBOX8
-background = #282828
+# background = #282828ff
+background = rgba(45, 24, 47, 0.3)
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 

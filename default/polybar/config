@@ -8,7 +8,9 @@ monitor=${env:MONITOR:}
 background = #00000000
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
-underline = #928374
+# underline = #928374
+underline = #35335e
+underline_active = #2b71a6
 
 # dark0 + gray
 color0 = #282828
@@ -77,7 +79,7 @@ label-urgent = "  %name%  "
 label-unfocused-underline = ${colors.underline}
 label-visible-underline = ${colors.underline}
 label-urgent-underline = ${colors.underline}
-label-focused-underline = ${colors.color3}
+label-focused-underline = ${colors.underline_active}
 
 [module/battery]
 type = internal/battery
@@ -97,7 +99,7 @@ label-discharging-padding = 2
 label-full-padding = 2
 format-full-background = ${colors.underline}
 format-charging-background = ${colors.underline}
-format-discharging-background = ${colors.underline}
+format-discharging-background = ${colors.underline_active}
 
 [module/cpu]
 type = internal/cpu
