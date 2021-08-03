@@ -245,7 +245,7 @@ bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
     bindsym d mode "default", exec --no-startup-id $terminal --title ranger --command ranger
     bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
-    bindsym n mode "default", exec --no-startup-id $terminal --title neomutt --command neomutt
+    bindsym n mode "default", exec --no-startup-id $terminal -o window.padding.x=0 window.padding.y=0 --title neomutt --command neomutt
     bindsym w mode "default", exec --no-startup-id $terminal --title wlan --command iwctl
     bindsym t mode "default", exec --no-startup-id teamspeak3
     bindsym f mode "default", exec --no-startup-id firefox
