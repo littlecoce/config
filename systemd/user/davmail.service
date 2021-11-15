@@ -7,6 +7,7 @@ Wants=mbsync@mailbox-default.timer
 Wants=goimapnotify@mailbox.service
 Wants=mbsync@o365-default.timer
 Wants=goimapnotify@o365.service
+Wants=vdirsyncer.timer
 
 [Service]
 ExecStart=/usr/bin/davmail %h/.mail/.davmail.properties

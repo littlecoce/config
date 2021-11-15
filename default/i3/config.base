@@ -141,7 +141,7 @@ mode "resize" {
 ############################################
 
 # Appearance
-new_float none
+default_floating_border pixel 1
 default_border pixel 1
 gaps inner 20
 gaps outer 10
@@ -244,11 +244,12 @@ set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
     bindsym d mode "default", exec --no-startup-id $terminal --title ranger --command ranger
+    bindsym e mode "default", exec --no-startup-id emacsclient -c
+    bindsym f mode "default", exec --no-startup-id firefox
     bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
     bindsym n mode "default", exec --no-startup-id $terminal -o window.padding.x=0 window.padding.y=0 --title neomutt --command neomutt
-    bindsym w mode "default", exec --no-startup-id $terminal --title wlan --command iwctl
     bindsym t mode "default", exec --no-startup-id teamspeak3
-    bindsym f mode "default", exec --no-startup-id firefox
+    bindsym w mode "default", exec --no-startup-id $terminal --title wlan --command iwctl
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -275,6 +276,7 @@ bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.pn
 bindsym --release Shift+Print exec scrot -fs $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
 bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
+bindsym $mod+asciicircum exec mbsync hotmail-default mailbox-default o365-default
 
 # Move whole workspace to other output
 bindsym $mod+Shift+Control+h move workspace to output left
