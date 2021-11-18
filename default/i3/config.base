@@ -1,6 +1,5 @@
 set $mod Mod1
-set $terminal termite
-# set $terminal urxvt
+set $terminal kitty
 
 font pango:DejaVu Sans Mono 14
 font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
@@ -143,8 +142,8 @@ mode "resize" {
 # Appearance
 new_float none
 default_border pixel 1
-gaps inner 0
-gaps outer 0
+# gaps inner 0
+# gaps outer 0
 
 workspace $ws1 output primary
 
@@ -212,16 +211,16 @@ mode "$mode_toggle" {
 }
 
 # Power Menu for shutdown, restart, suspend, etc.
-bindsym mod4+l exec --no-startup-id $HOME/.config/scripts/i3exit lock
+bindsym $mod4+l exec --no-startup-id dm-tool lock
 set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
+    bindsym l mode "default", exec --no-startup-id dm-tool lock
     bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit shutdown
+    bindsym s mode "default", exec --no-startup-id systemctl suspend
+    bindsym h mode "default", exec --no-startup-id systemctl hibernate
+    bindsym r mode "default", exec --no-startup-id systemctl reboot
+    bindsym p mode "default", exec --no-startup-id systemctl poweroff
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -239,13 +238,12 @@ mode "$mode_dom" {
 set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
-    bindsym d mode "default", exec --no-startup-id termite -t ranger -e ranger
-    bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
+    bindsym d mode "default", exec --no-startup-id $terminal -T ranger ranger
+    bindsym m mode "default", exec --no-startup-id $terminal -T vimpc vimpc
     bindsym n mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh neomutt
-    bindsym w mode "default", exec --no-startup-id termite -t wlan -e iwctl
+    bindsym w mode "default", exec --no-startup-id $terminal -T wlan iwctl
     bindsym t mode "default", exec --no-startup-id teamspeak3
     bindsym f mode "default", exec --no-startup-id firefox
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

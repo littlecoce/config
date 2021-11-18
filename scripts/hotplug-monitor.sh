@@ -1,8 +1,29 @@
 #!/bin/bash
 
-# DVI=$(</sys/class/drm/card0-DP-1/status)
-# VGA=$(</sys/class/drm/card0-VGA-1/status)
-# 
+connected=($(xrandr | awk '{if($2=="connected") print $1}'))
+offline=($(xrandr | awk '{if($2=="disconnected") print $1}'))
+
+echo "$(tr '\n' ' ' <<< $connected) detected"
+	
+if [ "${#connected[@]}" -gt 1 ]; then
+	left=$(echo -n $connected | tr "\n" " " | cut -f1 -d" ")
+	echo "Primary display: $left"
+	xrandr --output $left --auto --primary
+
+	for I in "${connected[@]:1}"; do
+		xrandr --output $I --right-of $left --auto 
+	done;
+
+elif [ "${#connected[@]}" -eq 1 ]; then
+	echo "Primary display: $connected"
+	/usr/bin/xrandr --output $connected --auto --primary
+fi
+
+for I in "${offline[@]}"; do
+	echo "$I is offline"
+	xrandr --output $I --off
+done;
+
 # if [ "connected" == "$DVI" ]; then
 # 	/usr/bin/xrandr --output DisplayPort-0 --left-of LVDS --auto
 # 	if [ "connected" == "$VGA" ]; then
@@ -20,8 +41,12 @@
 # 	/usr/bin/xrandr --output DisplayPort-0 --off
 # 	/usr/bin/notify-send --urgency=low "Monitor Hotplug" "Second Monitor disconnected"
 # fi
-xrandr --output HDMI-0 --left-of VGA-0 --auto --primary
-/usr/bin/sh ~/.config/scripts/launch.sh 1>&2 >/dev/null
-/usr/bin/feh --bg-fill ~/.config/default/current.jpg
-/usr/bin/betterlockscreen -u ~/.config/default/lock.jpg
+#
+#
+#
+#/usr/bin/xrandr --output eDP --left-of HDMI-A-0 --auto --primary
+#/usr/bin/xrandr --output HDMI-A-0 --right-of eDP --auto
+/bin/bash ~/.config/scripts/launch.sh 2>&1 >/dev/null
+/usr/bin/feh --bg-fill ~/.config/current.jpg
+#betterlockscreen -u ~/.config/default/lock.jpg
 exit
