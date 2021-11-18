@@ -1,5 +1,6 @@
 set $mod Mod1
-set $terminal kitty
+set $terminal alacritty
+# set $terminal urxvt
 
 font pango:DejaVu Sans Mono 14
 font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
@@ -15,7 +16,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '#282828' -nf '#a89984' -sb '#d79921' -b
+bindsym $mod+d exec dmenu_run -nb '#282828' -nf '#a89984' -sb '#d79921' -b -i
 
 # change focus
 bindsym $mod+h focus left
@@ -140,10 +141,10 @@ mode "resize" {
 ############################################
 
 # Appearance
-new_float none
+default_floating_border pixel 1
 default_border pixel 1
-# gaps inner 0
-# gaps outer 0
+gaps inner 20
+gaps outer 10
 
 workspace $ws1 output primary
 
@@ -189,6 +190,9 @@ for_window [class="^Steam$" title=".* CD key"] floating enable, border none
 for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable, border none
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable, border none
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable, border none
+
+# More window settings
+for_window [class="^firefox$" title="^Picture\\-in\\-Picture$"] sticky enable
 for_window [title="^Steam Keyboard$"] floating enable, border none
 for_window [title="^ranger"] floating enable, border none
 for_window [title="^mpd"] floating enable, border none
@@ -201,26 +205,27 @@ for_window [class="popup"] floating enable, border none
 set $mode_toggle toggle
 bindsym $mod+Control+t mode "$mode_toggle"
 mode "$mode_toggle" {
+	bindsym b mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh bluetooth
 	bindsym c mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh picom
 	bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh xautolock
-	bindsym b mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_prog.sh bluetooth
-	bindsym t mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_touchpad.sh
 	bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/hotplug-monitor.sh
+	bindsym t mode "default", exec --no-startup-id $HOME/.config/scripts/toggle_touchpad.sh
+	bindsym s mode "default", sticky toggle
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 # Power Menu for shutdown, restart, suspend, etc.
-bindsym $mod4+l exec --no-startup-id dm-tool lock
+bindsym mod4+l exec --no-startup-id $HOME/.config/scripts/i3exit lock
 set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id dm-tool lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit logout
-    bindsym s mode "default", exec --no-startup-id systemctl suspend
-    bindsym h mode "default", exec --no-startup-id systemctl hibernate
-    bindsym r mode "default", exec --no-startup-id systemctl reboot
-    bindsym p mode "default", exec --no-startup-id systemctl poweroff
+    bindsym l mode "default", exec --no-startup-id $HOME/.config/scripts/i3exit lock
+    bindsym e mode "default", exec --no-startup-id i3-msg exit
+    bindsym s mode "default", exec --no-startup-id sudo systemctl suspend
+    bindsym h mode "default", exec --no-startup-id sudo systemctl hibernate
+    bindsym r mode "default", exec --no-startup-id sudo systemctl reboot
+    bindsym p mode "default", exec --no-startup-id sudo systemctl poweroff
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -238,12 +243,35 @@ mode "$mode_dom" {
 set $mode_progs PROGS
 bindsym $mod+Control+p mode "$mode_progs"
 mode "$mode_progs" {
-    bindsym d mode "default", exec --no-startup-id $terminal -T ranger ranger
-    bindsym m mode "default", exec --no-startup-id $terminal -T vimpc vimpc
-    bindsym n mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh neomutt
-    bindsym w mode "default", exec --no-startup-id $terminal -T wlan iwctl
-    bindsym t mode "default", exec --no-startup-id teamspeak3
+    bindsym d mode "default", exec --no-startup-id $terminal --title ranger --command ranger
+    bindsym e mode "default", exec --no-startup-id emacsclient -c
     bindsym f mode "default", exec --no-startup-id firefox
+=======
+    bindsym d mode "default", exec --no-startup-id $terminal --title ranger --command ranger
+    bindsym e mode "default", exec --no-startup-id emacsclient -c
+    bindsym f mode "default", exec --no-startup-id firefox
+    bindsym m mode "default", exec --no-startup-id $HOME/.config/scripts/launch_blankless.sh vimpc
+    bindsym n mode "default", exec --no-startup-id $terminal -o window.padding.x=0 window.padding.y=0 --title neomutt --command neomutt
+    bindsym t mode "default", exec --no-startup-id teamspeak3
+    bindsym w mode "default", exec --no-startup-id $terminal --title wlan --command iwctl
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_kill KILL
+bindsym $mod+Control+k mode "$mode_kill"
+mode "$mode_kill" {
+    bindsym b mode "default", exec --no-startup-id pkill -fi -9 bc2
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_music MUSIC
+bindsym $mod+Control+m mode "$mode_music"
+mode "$mode_music" {
+    bindsym j exec --no-startup-id amixer sset Master 5%-
+    bindsym k exec --no-startup-id amixer sset Master 5%+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -252,6 +280,7 @@ bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.pn
 bindsym --release Shift+Print exec scrot -fs $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
 bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
+bindsym $mod+asciicircum exec mbsync hotmail-default mailbox-default o365-default
 
 # Move whole workspace to other output
 bindsym $mod+Shift+Control+h move workspace to output left

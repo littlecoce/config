@@ -22,7 +22,7 @@ if [[ $? -eq 0 ]]; then
 	fi
 else
 	if [[ $PROG == picom ]]; then
-		picom -b --config ~/.config/.picom.conf &
+		picom --experimental-backends -b --config ~/.config/.picom.conf &
 	elif [[ $PROG == xautolock ]]; then 
 		~/.config/scripts/xautolock.sh &
 	fi

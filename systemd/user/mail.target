@@ -1,0 +1,7 @@
+[Unit]
+Description=Mail target to manage dependent mail units
+AllowIsolate=no
+Wants=davmail.service
+
+[Install]
+WantedBy=default.target

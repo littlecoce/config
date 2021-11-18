@@ -1,0 +1,8 @@
+[Unit]
+Description="Unclutters the screen by removing the mouse"
+
+[Service]
+ExecStart=/usr/bin/unclutter
+
+[Install]
+WantedBy=multi-user.target

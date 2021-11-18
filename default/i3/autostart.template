@@ -8,13 +8,15 @@
 # exec_always --no-startup-id feh --bg-fill $HOME/.config/default/current.jpg
 # exec --no-startup-id betterlockscreen -u $HOME/.config/default/lock.jpg
 # exec --no-startup-id $HOME/.config/scripts/xautolock.sh
-# exec --no-startup-id dunst
 # exec --no-startup-id $HOME/.config/scripts/dbus_session.sh
+# exec --no-startup-id dunst
 
 ## Programms
 # exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
 # exec --no-startup-id i3-msg 'workspace $ws2; exec $HOME/.config/scripts/launch_blankless.sh neomutt &'
 # exec --no-startup-id mpd
+# exec --no-startup-id unclutter &
 # exec --no-startup-id steam
 # exec --no-startup-id picom -b --config $HOME/.config/.picom.conf
 # exec --no-startup-id $HOME/.config/scripts/sync_mail.sh
+# exec --no-startup-id unclutter
