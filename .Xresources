@@ -6,74 +6,39 @@
 ! ft.autohint:	false
 ! ft.lcdfilter:	lcddefault
 
-! Custom Colors
+! GRUVBOX8
 ! dark0 + gray
-*color0:	#070912
-*color8:	#616161
+*color0:	#282828
+*color8:	#928374
 
 ! neutral_red + bright_red
-*color1:	#4d182f
-*color9:	#872a53
+*color1:	#cc241d
+*color9:	#fb4934
 
 ! neutral_green + bright_green
-*color2:	#0a3024
-*color10:	#136b54	
+*color2:	#98971a
+*color10:	#b8bb26
 
 ! neutral_yellow + bright_yellow
-*color3:	#dec63d
-*color11:	#cc874a
+*color3:	#d79921
+*color11:	#fabd2f
 
 ! neutral_blue + bright_blue
-*color4:	#1c2847
-! oder #2b71a6
-*color12:	#264a75
+*color4:	#458588
+*color12:	#83a598
 
 ! neutral_purple + bright_purple
-! oder #5e5389
-*color5:	#35335e
-*color13:	#584c9c
+*color5:	#b16286
+*color13:	#d3869b
 
 ! neutral_aqua + faded_aqua
-*color6:	#d2f7f2
-*color14:	#2b71a6
+*color6:	#689d6a
+*color14:	#8ec07c
 
 ! light4 + light1
-*color7:	#fbfbfb
-*color15:	#e6fbfb
+*color7:	#a89984
+*color15:	#ebdbb2
 
-
-!! GRUVBOX8
-!! dark0 + gray
-!*color0:	#282828
-!*color8:	#928374
-!
-!! neutral_red + bright_red
-!*color1:	#cc241d
-!*color9:	#fb4934
-!
-!! neutral_green + bright_green
-!*color2:	#98971a
-!*color10:	#b8bb26
-!
-!! neutral_yellow + bright_yellow
-!*color3:	#d79921
-!*color11:	#fabd2f
-!
-!! neutral_blue + bright_blue
-!*color4:	#458588
-!*color12:	#83a598
-!
-!! neutral_purple + bright_purple
-!*color5:	#b16286
-!*color13:	#d3869b
-!
-!! neutral_aqua + faded_aqua
-!*color6:	#689d6a
-!*color14:	#8ec07c
-!
-!! light4 + light1
-!*color7:	#a89984
-!*color15:	#ebdbb2
 
 Rxvt*scrollBar:	false
 Rxvt*scrollBar_right:	false
