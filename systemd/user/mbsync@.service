@@ -4,6 +4,7 @@ ConditionPathExists=%h/.mbsyncrc
 
 [Service]
 ExecStart=/usr/bin/mbsync %i
+ExecAfter=~/.mail/update_search_index.sh
 
 [Install]
 WantedBy=default.target

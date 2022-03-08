@@ -276,7 +276,7 @@ bindsym Print exec scrot -u $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_active.pn
 bindsym --release Shift+Print exec scrot -fs $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_selection.png' -e 'feh $f'
 bindsym --release Control+Print exec scrot $HOME/scrots/'%Y-%m-%d_%H:%M:%S_screenshot_whole.png' 
 bindsym $mod+p exec passmenu
-bindsym $mod+asciicircum exec mbsync hotmail-default mailbox-default o365-default
+bindsym $mod+asciicircum exec mbsync hotmail-default mailbox-default o365-default; exec ~/.mail/update_search_index.sh
 
 # Move whole workspace to other output
 bindsym $mod+Shift+Control+h move workspace to output left
