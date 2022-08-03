@@ -2,8 +2,9 @@
 Description=Timer for mbsync
 ConditionPathExists=%h/.mbsyncrc
 PartOf=mail.target
-BindsTo=davmail.service
-After=mail.target davmail.service
+After=mail.target
+#BindsTo=davmail.service
+#After=mail.target davmail.service
 
 [Timer]
 Unit=mbsync@%i.service

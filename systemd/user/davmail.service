@@ -1,13 +1,11 @@
 [Unit]
 Description=Davmail Exchange Gateway
 PartOf=mail.target
-Wants=mbsync@hotmail-default.timer
-Wants=goimapnotify@hotmail.service
-Wants=mbsync@mailbox-default.timer
-Wants=goimapnotify@mailbox.service
 Wants=mbsync@o365-default.timer
 Wants=goimapnotify@o365.service
-Wants=vdirsyncer.timer
+Before=mbsync@o365-default.timer
+Before=goimapnotify@o365.service
+#Wants=vdirsyncer.timer
 
 [Service]
 ExecStart=/usr/bin/davmail %h/.mail/.davmail.properties

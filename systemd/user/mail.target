@@ -1,7 +1,19 @@
 [Unit]
 Description=Mail target to manage dependent mail units
 AllowIsolate=no
+# O365 Dependency
 Wants=davmail.service
+Before=davmail.service
+# Mailbox services
+Before=goimapnotify@mailbox.service
+Wants=goimapnotify@mailbox.service
+Before=mbsync@mailbox-default.timer
+Wants=mbsync@mailbox-default.timer
+# Hotmail services
+Before=goimapnotify@hotmail.service
+Wants=goimapnotify@hotmail.service
+Before=mbsync@hotmail-default.timer
+Wants=mbsync@hotmail-default.timer
 
 [Install]
 WantedBy=default.target

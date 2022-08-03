@@ -1,10 +1,10 @@
 [Unit]
 Description=mbsync for all channels
 ConditionPathExists=%h/.mbsyncrc
+Before=update-mail-index.service
 
 [Service]
 ExecStart=/usr/bin/mbsync %i
-ExecAfter=~/.mail/update_search_index.sh
 
 [Install]
-WantedBy=default.target
+WantedBy=mail.target
