@@ -5,4 +5,4 @@ Description="Unclutters the screen by removing the mouse"
 ExecStart=/usr/bin/unclutter
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

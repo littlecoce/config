@@ -6,12 +6,12 @@ offline=($(xrandr | awk '{if($2=="disconnected") print $1}'))
 echo "$(tr '\n' ' ' <<< $connected) detected"
 	
 if [ "${#connected[@]}" -gt 1 ]; then
-	left=$(echo -n $connected | tr "\n" " " | cut -f1 -d" ")
-	echo "Primary display: $left"
-	xrandr --output $left --auto --primary
+	right=$(echo -n $connected | tr "\n" " " | cut -f1 -d" ")
+	echo "Primary display: $right"
+	xrandr --output $right --auto --primary
 
 	for I in "${connected[@]:1}"; do
-		xrandr --output $I --right-of $left --auto 
+		xrandr --output $I --left-of $right --auto 
 	done;
 
 elif [ "${#connected[@]}" -eq 1 ]; then

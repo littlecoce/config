@@ -53,8 +53,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 font-0 = Fira Code:pixelsize=8;1
 font-1 = "Noto Sans CJK JP:size=9;1"
-font-2 = "FontAwesome:pixelsize=9;2"
-# font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;2"
+font-2 = "Font Awesome 6 Free:style=Solid:pixelsize=9;2"
 wm-restack = i3
 modules-left = i3 speaker volume mpd
 modules-center = date
@@ -140,8 +139,8 @@ type = custom/script
 exec = ''
 interval = 999999
 ;click-left = amixer sset Front toggle; amixer sset Headphone toggle
-click-left = pacmd set-sink-port 0 analog-output-headphones
-click-right = pacmd set-sink-port 0 analog-output-lineout
+click-left = pactl set-sink-port @DEFAULT_SINK@ analog-output-headphones
+click-right = pactl set-sink-port @DEFAULT_SINK@ analog-output-lineout
 format = <label>
 format-underline = ${colors.underline}
 label = ""
