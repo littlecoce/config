@@ -1,9 +1,0 @@
-[Unit]
-Description=Updates mail search index
-ConditionPathExists=%h/.mbsyncrc
-
-[Service]
-ExecStart=%h/mail/update_search_index.sh
-
-[Install]
-WantedBy=mail.target
