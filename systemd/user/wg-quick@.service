@@ -1,0 +1,11 @@
+[Unit]
+Description=Starts wireguard interface with sudo, check sudoers
+
+[Service]
+Type=oneshot
+ExecStart=sudo /usr/bin/wg-quick up %i
+ExecStop=sudo /usr/bin/wg-quick down %i
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

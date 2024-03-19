@@ -1,9 +1,9 @@
 [Unit]
 Description=Davmail Exchange Gateway
 PartOf=mail.target
-Wants=mbsync@o365-default.timer
+#Wants=mbsync@o365-default.timer
 Wants=goimapnotify@o365.service
-Before=mbsync@o365-default.timer
+#Before=mbsync@o365-default.timer
 Before=goimapnotify@o365.service
 #Wants=vdirsyncer.timer
 

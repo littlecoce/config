@@ -2,6 +2,7 @@
 Description=Dunst User Service
 
 [Service]
+Environment="DISPLAY=:0"
 ExecStart=/usr/bin/dunst
 
 [Install]

@@ -7,14 +7,19 @@ elif [[ $1 == xautolock ]]; then
 elif [[ $1 == bluetooth ]]; then
 	$HOME/.config/scripts/toggle_bluetooth.sh
 	exit $?
+elif [[ $1 == cups ]]; then
+	PROG=cupsd
 else
 	exit 1;
 fi
 
 PID=$(pidof $PROG)
-
 if [[ $? -eq 0 ]]; then
-	kill $PID
+        if [[ $PROG == cupsd ]];then
+            sudo systemctl stop cups.service
+        else
+            kill $PID
+        fi
 	if [[ $? -eq 0 ]]; then
 		notify-send -u low $PROG "Deactivated"
 	else
@@ -25,6 +30,8 @@ else
 		picom --experimental-backends -b --config ~/.config/.picom.conf &
 	elif [[ $PROG == xautolock ]]; then 
 		~/.config/scripts/xautolock.sh &
+	elif [[ $PROG == cupsd ]]; then
+		sudo systemctl start cups.service
 	fi
 	if [[ $? -eq 0 ]]; then
 		notify-send -u low $PROG "Activated"
